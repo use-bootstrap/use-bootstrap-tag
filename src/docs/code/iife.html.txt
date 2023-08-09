@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Use Bootstrap Tag Demo</title>
+    <link href="https://unpkg.com/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="node_modules/use-bootstrap-tag/dist/use-bootstrap-tag.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div id="example"></div>
+    <script src="https://unpkg.com/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="node_modules/use-bootstrap-tag/dist/use-bootstrap-tag.min.js"></script>
+  </body>
+</html>

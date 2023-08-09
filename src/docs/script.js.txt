@@ -1,0 +1,57 @@
+document.getElementById('bs-theme').addEventListener('change', (e) => {
+  document.documentElement.setAttribute('data-bs-theme', e.target.checked ? 'dark' : 'light')
+})
+
+document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((el) => {
+  new bootstrap.Tooltip(el)
+})
+
+let initialized = false
+document.getElementById('example-tab').addEventListener('shown.bs.tab', () => {
+  if (!initialized) {
+    document.querySelectorAll('input:not([id])').forEach((inputElement) => {
+      UseBootstrapTag(inputElement)
+    })
+    const example = UseBootstrapTag(document.getElementById('example'))
+    document.getElementById('addValue1').addEventListener('click', () => {
+      example.addValue('cyan')
+    })
+    document.getElementById('addValue2').addEventListener('click', () => {
+      example.addValue(['light', 'dark'])
+    })
+    document.getElementById('removeValue1').addEventListener('click', () => {
+      example.removeValue('cyan')
+    })
+    document.getElementById('removeValue2').addEventListener('click', () => {
+      example.removeValue(['light', 'dark'])
+    })
+    document.getElementById('getValue').addEventListener('click', () => {
+      alert(example.getValue())
+    })
+    document.getElementById('getValues').addEventListener('click', () => {
+      alert(JSON.stringify(example.getValues()))
+    })
+    const msnry = new Masonry(document.getElementById('masonry-row'), {
+      percentPosition: true,
+      transitionDuration: 0,
+    })
+    document.querySelectorAll('#masonry-row [data-bs-toggle="tab"]').forEach((tab) => {
+      tab.addEventListener('shown.bs.tab', () => {
+        msnry.layout()
+      })
+    })
+  }
+  initialized = true
+})
+
+void (function () {
+  document.querySelectorAll('.needs-validation').forEach((form) => {
+    form.addEventListener('submit', (event) => {
+      if (!form.checkValidity()) {
+        event.preventDefault()
+        event.stopPropagation()
+      }
+      form.classList.add('was-validated')
+    })
+  })
+})()

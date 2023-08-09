@@ -1,0 +1,6 @@
+<!-- Using data-ub-tag-enter attribute: -->
+<input type="text" class="form-control" data-ub-tag-enter placeholder="Add a tag, then press comma or Enter" id="example-enter">
+
+<script>
+  UseBootstrapTag(document.getElementById('example-enter'))
+</script>

@@ -1,0 +1,80 @@
+{
+  "name": "use-bootstrap-tag",
+  "type": "module",
+  "version": "0.0.1",
+  "description": "Tag input for Bootstrap 5",
+  "license": "MIT",
+  "homepage": "https://use-bootstrap-tag.js.org",
+  "repository": "https://github.com/use-bootstrap/use-bootstrap-tag",
+  "bugs": {
+    "url": "https://github.com/use-bootstrap/use-bootstrap-tag/issues"
+  },
+  "keywords": [
+    "bootstrap tag",
+    "tag input",
+    "bootstrap input"
+  ],
+  "exports": {
+    "import": {
+      "types": "./dist/use-bootstrap-tag.d.mts",
+      "default": "./dist/use-bootstrap-tag.mjs"
+    }
+  },
+  "main": "./dist/use-bootstrap-tag.mjs",
+  "module": "./dist/use-bootstrap-tag.mjs",
+  "types": "./dist/use-bootstrap-tag.d.mts",
+  "files": [
+    "dist",
+    "src/style.scss"
+  ],
+  "browserslist": [
+    ">= 0.5%",
+    "last 2 major versions",
+    "not dead",
+    "Chrome >= 60",
+    "Firefox >= 60",
+    "Firefox ESR",
+    "iOS >= 12",
+    "Safari >= 12",
+    "not Explorer <= 11"
+  ],
+  "scripts": {
+    "dev": "jalankan dev:* -p",
+    "dev:js:iife": "echo \"import { UseBootstrapTag } from './src/use-bootstrap-tag'; window.UseBootstrapTag = UseBootstrapTag\" | esbuild --loader=ts --bundle --outfile=dist/use-bootstrap-tag.js --log-level=error --watch=forever",
+    "dev:css": "sass --source-map --embed-sources src/use-bootstrap-tag.scss:dist/use-bootstrap-tag.css --watch",
+    "dev:docs": "halaman dev src/docs/pages --static dist --watch=src/docs/**/*,dist/**/*",
+    "build": "shx rm -rf dist && jalankan build:*",
+    "build:js": "pkgroll",
+    "build:js:min": "esbuild dist/use-bootstrap-tag.mjs --minify --outfile=dist/use-bootstrap-tag.min.mjs --log-level=silent",
+    "build:iife": "echo \"import { UseBootstrapTag } from './src/use-bootstrap-tag'; window.UseBootstrapTag = UseBootstrapTag\" | esbuild --loader=ts --bundle --outfile=dist/use-bootstrap-tag.js --log-level=silent",
+    "build:iife:min": "esbuild dist/use-bootstrap-tag.js --minify --outfile=dist/use-bootstrap-tag.min.js --log-level=silent",
+    "build:css": "sass --source-map --embed-sources src/use-bootstrap-tag.scss:dist/use-bootstrap-tag.css",
+    "build:css:prefix": "postcss dist/use-bootstrap-tag.css --use autoprefixer --map --replace",
+    "build:css:min": "esbuild dist/use-bootstrap-tag.css --minify --outfile=dist/use-bootstrap-tag.min.css --log-level=silent",
+    "build:docs": "halaman build src/docs/pages docs --pretty --static dist",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "serve": "halaman serve docs"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "0.40.2",
+    "@types/bootstrap": "5.2.6",
+    "@types/node": "20.4.9",
+    "@types/react": "18.2.19",
+    "autoprefixer": "10.4.14",
+    "bootstrap": "5.3.1",
+    "esbuild": "0.19.0",
+    "eslint": "8.46.0",
+    "eslint-plugin-react": "7.33.1",
+    "halaman": "0.2.4",
+    "jalankan": "0.0.1",
+    "pkgroll": "1.11.0",
+    "postcss": "8.4.27",
+    "postcss-cli": "10.1.0",
+    "react": "18.2.0",
+    "react-icons": "4.10.1",
+    "sass": "1.64.2",
+    "shx": "0.3.4",
+    "typescript": "5.1.6"
+  }
+}

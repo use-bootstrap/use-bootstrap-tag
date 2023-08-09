@@ -1,0 +1,5 @@
+<input type="text" class="form-control" placeholder="Add a color then press comma" id="example-placeholder">
+
+<script>
+  UseBootstrapTag(document.getElementById('example-placeholder'))
+</script>

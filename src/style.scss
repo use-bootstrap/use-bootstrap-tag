@@ -1,0 +1,40 @@
+$name: 'use-bootstrap-tag';
+
+.#{$name} {
+  .autowidth {
+    padding: 0;
+    outline: 0;
+    border: 0;
+    width: 4px;
+    min-width: 4px;
+    max-width: 100%;
+    background-color: transparent;
+  }
+  &:not(.disabled) {
+    cursor: text;
+  }
+  .#{$name}-remove {
+    cursor: pointer;
+  }
+  // Keep the focus style
+  &.focus {
+    color: $input-focus-color;
+    background-color: $input-focus-bg;
+    border-color: $input-focus-border-color;
+    outline: 0;
+    @if $enable-shadows {
+      @include box-shadow($input-box-shadow, $input-focus-box-shadow);
+    } @else {
+      box-shadow: $input-focus-box-shadow;
+    }
+
+    &.is-valid {
+      border-color: $form-valid-border-color;
+      box-shadow: 0 0 $input-btn-focus-blur $input-focus-width rgba($form-valid-color, $input-btn-focus-color-opacity);
+    }
+    &.is-invalid {
+      border-color: $form-invalid-border-color;
+      box-shadow: 0 0 $input-btn-focus-blur $input-focus-width rgba($form-invalid-color, $input-btn-focus-color-opacity);
+    }
+  }
+}

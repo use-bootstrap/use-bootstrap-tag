@@ -1,0 +1,572 @@
+<html lang="en" data-bs-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Tag input for Bootstrap 5" />
+    <meta name="keywords" content="bootstrap tag, tag input, bootstrap input" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="stylesheet" href="https://cdn.statically.io/gh/twbs/bootstrap/main/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="use-bootstrap-tag.min.css" />
+    <link rel="stylesheet" href="https://cdn.statically.io/gh/PrismJS/prism/master/themes/prism-tomorrow.min.css" />
+    <link rel="stylesheet" href="https://fonts.upset.dev/css2?family=Hind+Siliguri:wght@300;400;500;600;700&amp;display=swap" />
+    <title>use-bootstrap-tag | Tag input for Bootstrap 5</title>
+    <style>
+      [data-bs-theme='light'] #bs-theme-light {
+        display: none;
+      }
+      [data-bs-theme='dark'] #bs-theme-dark {
+        display: none;
+      }
+      body {
+        font-family: 'Hind Siliguri', sans-serif;
+      }
+      pre[class*='language-'] {
+        font-size: 0.875rem;
+        border-radius: var(--bs-border-radius);
+        background: #2b3035;
+        margin: 0;
+        margin-bottom: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top">
+      <div class="container justify-content-start">
+        <a class="navbar-brand d-flex align-items-center gap-2" href="/">
+          <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 2v4.586l7 7L14.586 9l-7-7H3zM2 2a1 1 0 0 1 1-1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 2 6.586V2z"></path>
+            <path d="M5.5 5a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm0 1a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM1 7.086a1 1 0 0 0 .293.707L8.75 15.25l-.043.043a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 0 7.586V3a1 1 0 0 1 1-1v5.086z"></path>
+          </svg>
+          use-bootstrap-tag
+        </a>
+        <small class="small">v0.0.1</small>
+        <div class="ms-auto d-flex align-items-center gap-3">
+          <a class="fs-5 link-body-emphasis" href="https://github.com/use-bootstrap/use-bootstrap-tag" target="_blank">
+            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
+          </a>
+          <div>
+            <input type="checkbox" class="btn-check" id="bs-theme" autocomplete="off" />
+            <label class="btn p-0 border-0 fs-5" for="bs-theme" id="bs-theme-dark" data-bs-toggle="tooltip" data-bs-offset="0,15" title="Toggle dark mode">
+              <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </label>
+            <label class="btn p-0 border-0 fs-5" for="bs-theme" id="bs-theme-light" data-bs-toggle="tooltip" data-bs-offset="0,15" title="Toggle light mode">
+              <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+              </svg>
+            </label>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="container py-3">
+      <p class="text-body-secondary">Tag input for Bootstrap 5</p>
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation"><button class="nav-link active" id="features-tab" data-bs-toggle="tab" data-bs-target="#features-tab-pane" type="button" role="tab" aria-controls="features-tab-pane" aria-selected="true">Features</button></li>
+        <li class="nav-item" role="presentation"><button class="nav-link" id="installation-tab" data-bs-toggle="tab" data-bs-target="#installation-tab-pane" type="button" role="tab" aria-controls="installation-tab-pane" aria-selected="false">Installation</button></li>
+        <li class="nav-item" role="presentation"><button class="nav-link" id="example-tab" data-bs-toggle="tab" data-bs-target="#example-tab-pane" type="button" role="tab" aria-controls="example-tab-pane" aria-selected="false">Example</button></li>
+        <li class="nav-item" role="presentation"><button class="nav-link" id="methods-tab" data-bs-toggle="tab" data-bs-target="#methods-tab-pane" type="button" role="tab" aria-controls="methods-tab-pane" aria-selected="false">Methods</button></li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane pt-4 show active" id="features-tab-pane" role="tabpanel" aria-labelledby="features-tab" tabindex="0">
+          <h2 class="fw-bold">Features</h2>
+          <ul class="text-body-secondary">
+            <li>
+              <b>Custom separator</b>
+              : Set a specific delimiter character between tag elements.
+            </li>
+            <li>
+              <b>Enable/disable duplicates</b>
+              : Toggle the allowance of duplicate tags.
+            </li>
+            <li>
+              <b>Custom transformation</b>
+              : Define personalized modifications to input tag entries.
+            </li>
+            <li>
+              <b>Sizing</b>
+              : Adjustable sizing to match user preferences or layouts.
+            </li>
+            <li>
+              <b>Validation</b>
+              : Reflects validation states visually to align with Bootstrap&#x27;s form validation feedback.
+            </li>
+          </ul>
+        </div>
+        <div class="tab-pane pt-4" id="installation-tab-pane" role="tabpanel" aria-labelledby="installation-tab" tabindex="0">
+          <h2 class="fw-bold">Installation</h2>
+          <p>Install from npm:</p>
+          <pre><code class="language-bash">npm install use-bootstrap-tag
+</code></pre>
+          <p>After installation, you can import the library into your project as follows:</p>
+          <pre><code class="language-javascript">import &#x27;use-bootstrap-tag/dist/use-bootstrap-tag.css&#x27;
+import { UseBootstrapTag } from &#x27;use-bootstrap-tag&#x27;
+</code></pre>
+          <p>or, since it also comes with an IIFE bundle, you can insert it directly into your HTML:</p>
+          <pre><code class="language-html">&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+    &lt;title&gt;Use Bootstrap Tag Demo&lt;/title&gt;
+    &lt;link href=&quot;https://unpkg.com/bootstrap@5.3.1/dist/css/bootstrap.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+    &lt;link href=&quot;node_modules/use-bootstrap-tag/dist/use-bootstrap-tag.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div id=&quot;example&quot;&gt;&lt;/div&gt;
+    &lt;script src=&quot;https://unpkg.com/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;node_modules/use-bootstrap-tag/dist/use-bootstrap-tag.min.js&quot;&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+        </div>
+        <div class="tab-pane pt-4" id="example-tab-pane" role="tabpanel" aria-labelledby="example-tab" tabindex="0">
+          <h2 class="fw-bold mb-4">Example</h2>
+          <div class="row g-5" id="masonry-row">
+            <div class="col-12 col-lg-6 col-xxl-4">
+              <div class="card">
+                <div class="card-header">
+                  <ul class="nav nav-tabs card-header-tabs">
+                    <li class="nav-item" role="presentation"><button class="nav-link active" id="basic-preview-tab" data-bs-toggle="tab" data-bs-target="#basic-preview-tab-pane" type="button" role="tab" aria-controls="basic-preview-tab-pane" aria-selected="true">Preview</button></li>
+                    <li class="nav-item" role="presentation"><button class="nav-link" id="basic-code-tab" data-bs-toggle="tab" data-bs-target="#basic-code-tab-pane" type="button" role="tab" aria-controls="basic-code-tab-pane" aria-selected="false">Code</button></li>
+                  </ul>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Basic</h5>
+                  <div class="tab-content">
+                    <div class="tab-pane show active" id="basic-preview-tab-pane" role="tabpanel" aria-labelledby="basic-preview-tab"><input type="text" class="form-control" value="red,green,blue" /></div>
+                    <div class="tab-pane" id="basic-code-tab-pane" role="tabpanel" aria-labelledby="basic-code-tab">
+                      <pre><code class="language-html">&lt;input type=&quot;text&quot; class=&quot;form-control&quot; value=&quot;red,green,blue&quot; id=&quot;example-basic&quot;&gt;
+
+&lt;script&gt;
+  UseBootstrapTag(document.getElementById(&#x27;example-basic&#x27;))
+&lt;/script&gt;
+</code></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-lg-6 col-xxl-4">
+              <div class="card">
+                <div class="card-header">
+                  <ul class="nav nav-tabs card-header-tabs">
+                    <li class="nav-item" role="presentation"><button class="nav-link active" id="placeholder-preview-tab" data-bs-toggle="tab" data-bs-target="#placeholder-preview-tab-pane" type="button" role="tab" aria-controls="placeholder-preview-tab-pane" aria-selected="true">Preview</button></li>
+                    <li class="nav-item" role="presentation"><button class="nav-link" id="placeholder-code-tab" data-bs-toggle="tab" data-bs-target="#placeholder-code-tab-pane" type="button" role="tab" aria-controls="placeholder-code-tab-pane" aria-selected="false">Code</button></li>
+                  </ul>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Placeholder</h5>
+                  <div class="tab-content">
+                    <div class="tab-pane show active" id="placeholder-preview-tab-pane" role="tabpanel" aria-labelledby="placeholder-preview-tab"><input type="text" class="form-control" placeholder="Add a color then press comma" /></div>
+                    <div class="tab-pane" id="placeholder-code-tab-pane" role="tabpanel" aria-labelledby="placeholder-code-tab">
+                      <pre><code class="language-html">&lt;input type=&quot;text&quot; class=&quot;form-control&quot; placeholder=&quot;Add a color then press comma&quot; id=&quot;example-placeholder&quot;&gt;
+
+&lt;script&gt;
+  UseBootstrapTag(document.getElementById(&#x27;example-placeholder&#x27;))
+&lt;/script&gt;
+</code></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-lg-6 col-xxl-4">
+              <div class="card">
+                <div class="card-header">
+                  <ul class="nav nav-tabs card-header-tabs">
+                    <li class="nav-item" role="presentation"><button class="nav-link active" id="separator-preview-tab" data-bs-toggle="tab" data-bs-target="#separator-preview-tab-pane" type="button" role="tab" aria-controls="separator-preview-tab-pane" aria-selected="true">Preview</button></li>
+                    <li class="nav-item" role="presentation"><button class="nav-link" id="separator-code-tab" data-bs-toggle="tab" data-bs-target="#separator-code-tab-pane" type="button" role="tab" aria-controls="separator-code-tab-pane" aria-selected="false">Code</button></li>
+                  </ul>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Custom separator</h5>
+                  <div class="tab-content">
+                    <div class="tab-pane show active" id="separator-preview-tab-pane" role="tabpanel" aria-labelledby="separator-preview-tab"><input type="text" class="form-control" placeholder="Add a color then press space" data-ub-tag-separator=" " /></div>
+                    <div class="tab-pane" id="separator-code-tab-pane" role="tabpanel" aria-labelledby="separator-code-tab">
+                      <pre><code class="language-html">&lt;!-- Using data-ub-tag-separator attribute: --&gt;
+&lt;input type=&quot;text&quot; class=&quot;form-control&quot; placeholder=&quot;Add a color then press space&quot; data-ub-tag-separator=&quot; &quot; id=&quot;example-separator&quot;&gt;
+
+&lt;script&gt;
+  UseBootstrapTag(document.getElementById(&#x27;example-separator&#x27;))
+&lt;/script&gt;
+</code></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-lg-6 col-xxl-4">
+              <div class="card">
+                <div class="card-header">
+                  <ul class="nav nav-tabs card-header-tabs">
+                    <li class="nav-item" role="presentation"><button class="nav-link active" id="duplicate-preview-tab" data-bs-toggle="tab" data-bs-target="#duplicate-preview-tab-pane" type="button" role="tab" aria-controls="duplicate-preview-tab-pane" aria-selected="true">Preview</button></li>
+                    <li class="nav-item" role="presentation"><button class="nav-link" id="duplicate-code-tab" data-bs-toggle="tab" data-bs-target="#duplicate-code-tab-pane" type="button" role="tab" aria-controls="duplicate-code-tab-pane" aria-selected="false">Code</button></li>
+                  </ul>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Allow duplicates</h5>
+                  <div class="tab-content">
+                    <div class="tab-pane show active" id="duplicate-preview-tab-pane" role="tabpanel" aria-labelledby="duplicate-preview-tab"><input type="text" class="form-control" data-ub-tag-duplicate="true" value="red,red,green,green,blue" /></div>
+                    <div class="tab-pane" id="duplicate-code-tab-pane" role="tabpanel" aria-labelledby="duplicate-code-tab">
+                      <pre><code class="language-html">&lt;!-- Using data-ub-tag-duplicate attribute: --&gt;
+&lt;input type=&quot;text&quot; class=&quot;form-control&quot; value=&quot;red,red,green,green,blue&quot; data-ub-tag-duplicate id=&quot;example-duplicate&quot;&gt;
+
+&lt;script&gt;
+  UseBootstrapTag(document.getElementById(&#x27;example-duplicate&#x27;))
+&lt;/script&gt;
+</code></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-lg-6 col-xxl-4">
+              <div class="card">
+                <div class="card-header">
+                  <ul class="nav nav-tabs card-header-tabs">
+                    <li class="nav-item" role="presentation"><button class="nav-link active" id="transform-preview-tab" data-bs-toggle="tab" data-bs-target="#transform-preview-tab-pane" type="button" role="tab" aria-controls="transform-preview-tab-pane" aria-selected="true">Preview</button></li>
+                    <li class="nav-item" role="presentation"><button class="nav-link" id="transform-code-tab" data-bs-toggle="tab" data-bs-target="#transform-code-tab-pane" type="button" role="tab" aria-controls="transform-code-tab-pane" aria-selected="false">Code</button></li>
+                  </ul>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Transform tags</h5>
+                  <div class="tab-content">
+                    <div class="tab-pane show active" id="transform-preview-tab-pane" role="tabpanel" aria-labelledby="transform-preview-tab"><input type="text" class="form-control" data-ub-tag-transform="input =&gt; input.toUpperCase()" value="RED,GREEN,BLUE" /></div>
+                    <div class="tab-pane" id="transform-code-tab-pane" role="tabpanel" aria-labelledby="transform-code-tab">
+                      <pre><code class="language-html">&lt;!-- Using data-ub-tag-transform attribute: --&gt;
+&lt;input type=&quot;text&quot; class=&quot;form-control&quot; value=&quot;RED,GREEN,BLUE&quot; data-ub-tag-transform=&quot;input =&gt; input.toUpperCase()&quot; id=&quot;example-transform&quot;&gt;
+
+&lt;script&gt;
+  UseBootstrapTag(document.getElementById(&#x27;example-transform&#x27;))
+&lt;/script&gt;
+</code></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-lg-6 col-xxl-4">
+              <div class="card">
+                <div class="card-header">
+                  <ul class="nav nav-tabs card-header-tabs">
+                    <li class="nav-item" role="presentation"><button class="nav-link active" id="enter-preview-tab" data-bs-toggle="tab" data-bs-target="#enter-preview-tab-pane" type="button" role="tab" aria-controls="enter-preview-tab-pane" aria-selected="true">Preview</button></li>
+                    <li class="nav-item" role="presentation"><button class="nav-link" id="enter-code-tab" data-bs-toggle="tab" data-bs-target="#enter-code-tab-pane" type="button" role="tab" aria-controls="enter-code-tab-pane" aria-selected="false">Code</button></li>
+                  </ul>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Add tag when pressing Enter</h5>
+                  <div class="tab-content">
+                    <div class="tab-pane show active" id="enter-preview-tab-pane" role="tabpanel" aria-labelledby="enter-preview-tab"><input type="text" class="form-control" data-ub-tag-enter="true" placeholder="Add a tag, then press comma or Enter" /></div>
+                    <div class="tab-pane" id="enter-code-tab-pane" role="tabpanel" aria-labelledby="enter-code-tab">
+                      <pre><code class="language-html">&lt;!-- Using data-ub-tag-enter attribute: --&gt;
+&lt;input type=&quot;text&quot; class=&quot;form-control&quot; data-ub-tag-enter placeholder=&quot;Add a tag, then press comma or Enter&quot; id=&quot;example-enter&quot;&gt;
+
+&lt;script&gt;
+  UseBootstrapTag(document.getElementById(&#x27;example-enter&#x27;))
+&lt;/script&gt;
+</code></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-lg-6 col-xxl-4">
+              <div class="card">
+                <div class="card-header">
+                  <ul class="nav nav-tabs card-header-tabs">
+                    <li class="nav-item" role="presentation"><button class="nav-link active" id="disabled-preview-tab" data-bs-toggle="tab" data-bs-target="#disabled-preview-tab-pane" type="button" role="tab" aria-controls="disabled-preview-tab-pane" aria-selected="true">Preview</button></li>
+                    <li class="nav-item" role="presentation"><button class="nav-link" id="disabled-code-tab" data-bs-toggle="tab" data-bs-target="#disabled-code-tab-pane" type="button" role="tab" aria-controls="disabled-code-tab-pane" aria-selected="false">Code</button></li>
+                  </ul>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Disabled</h5>
+                  <div class="tab-content">
+                    <div class="tab-pane show active" id="disabled-preview-tab-pane" role="tabpanel" aria-labelledby="disabled-preview-tab"><input type="text" class="form-control" disabled="" value="red,green,blue" /></div>
+                    <div class="tab-pane" id="disabled-code-tab-pane" role="tabpanel" aria-labelledby="disabled-code-tab">
+                      <pre><code class="language-html">&lt;input type=&quot;text&quot; class=&quot;form-control&quot; value=&quot;red,green,blue&quot; id=&quot;example-disabled&quot; disabled&gt;
+
+&lt;script&gt;
+  UseBootstrapTag(document.getElementById(&#x27;example-disabled&#x27;))
+&lt;/script&gt;
+</code></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-lg-6 col-xxl-4">
+              <div class="card">
+                <div class="card-header">
+                  <ul class="nav nav-tabs card-header-tabs">
+                    <li class="nav-item" role="presentation"><button class="nav-link active" id="sizing-preview-tab" data-bs-toggle="tab" data-bs-target="#sizing-preview-tab-pane" type="button" role="tab" aria-controls="sizing-preview-tab-pane" aria-selected="true">Preview</button></li>
+                    <li class="nav-item" role="presentation"><button class="nav-link" id="sizing-code-tab" data-bs-toggle="tab" data-bs-target="#sizing-code-tab-pane" type="button" role="tab" aria-controls="sizing-code-tab-pane" aria-selected="false">Code</button></li>
+                  </ul>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Sizing</h5>
+                  <div class="tab-content">
+                    <div class="tab-pane show active" id="sizing-preview-tab-pane" role="tabpanel" aria-labelledby="sizing-preview-tab">
+                      <div class="vstack gap-2">
+                        <input type="text" class="form-control form-control-sm" value="red,green,blue" />
+                        <input type="text" class="form-control" value="red,green,blue" />
+                        <input type="text" class="form-control form-control-lg" value="red,green,blue" />
+                      </div>
+                    </div>
+                    <div class="tab-pane" id="sizing-code-tab-pane" role="tabpanel" aria-labelledby="sizing-code-tab">
+                      <pre><code class="language-html">&lt;input type=&quot;text&quot; class=&quot;form-control example-sizing form-control-sm&quot; value=&quot;red,green,blue&quot;&gt;
+&lt;input type=&quot;text&quot; class=&quot;form-control example-sizing&quot; value=&quot;red,green,blue&quot;&gt;
+&lt;input type=&quot;text&quot; class=&quot;form-control example-sizing form-control-lg&quot; value=&quot;red,green,blue&quot;&gt;
+
+&lt;script&gt;
+  for (const input of document.querySelectorAll(&#x27;.example-sizing&#x27;)) {
+    UseBootstrapTag(input)
+  }
+&lt;/script&gt;
+</code></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-lg-6 col-xxl-4">
+              <div class="card">
+                <div class="card-header">
+                  <ul class="nav nav-tabs card-header-tabs">
+                    <li class="nav-item" role="presentation"><button class="nav-link active" id="validation-preview-tab" data-bs-toggle="tab" data-bs-target="#validation-preview-tab-pane" type="button" role="tab" aria-controls="validation-preview-tab-pane" aria-selected="true">Preview</button></li>
+                    <li class="nav-item" role="presentation"><button class="nav-link" id="validation-code-tab" data-bs-toggle="tab" data-bs-target="#validation-code-tab-pane" type="button" role="tab" aria-controls="validation-code-tab-pane" aria-selected="false">Code</button></li>
+                  </ul>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Validation</h5>
+                  <div class="tab-content">
+                    <div class="tab-pane show active" id="validation-preview-tab-pane" role="tabpanel" aria-labelledby="validation-preview-tab">
+                      <form class="needs-validation vstack gap-3" novalidate="">
+                        <div>
+                          <input type="text" class="form-control" name="tags" placeholder="Add a tag" data-ub-tag-enter="true" required="" />
+                          <div class="invalid-feedback">This field is required.</div>
+                          <div class="valid-feedback">Looks good!</div>
+                        </div>
+                        <button class="btn btn-primary" type="submit">Submit</button>
+                      </form>
+                    </div>
+                    <div class="tab-pane" id="validation-code-tab-pane" role="tabpanel" aria-labelledby="validation-code-tab">
+                      <pre><code class="language-html">&lt;form class=&quot;needs-validation vstack gap-3&quot; novalidate&gt;
+  &lt;div&gt;
+    &lt;input type=&quot;text&quot; class=&quot;form-control&quot; name=&quot;tags&quot; placeholder=&quot;Add a tag&quot; data-ub-tag-enter required id=&quot;example-validation&quot; /&gt;
+    &lt;div class=&quot;invalid-feedback&quot;&gt;This field is required.&lt;/div&gt;
+    &lt;div class=&quot;valid-feedback&quot;&gt;Looks good!&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;button class=&quot;btn btn-primary&quot; type=&quot;submit&quot;&gt;Submit&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;script&gt;
+  UseBootstrapTag(document.getElementById(&#x27;example-validation&#x27;))
+
+  // Example starter JavaScript for disabling form submissions if there are invalid fields
+  void (function () {
+    document.querySelectorAll(&#x27;.needs-validation&#x27;).forEach(form =&gt; {
+      form.addEventListener(&#x27;submit&#x27;, event =&gt; {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+        form.classList.add(&#x27;was-validated&#x27;)
+      })
+    })
+  })()
+&lt;/script&gt;
+</code></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-lg-6 col-xxl-4">
+              <div class="card">
+                <div class="card-header">
+                  <ul class="nav nav-tabs card-header-tabs">
+                    <li class="nav-item" role="presentation"><button class="nav-link active" id="methods-preview-tab" data-bs-toggle="tab" data-bs-target="#methods-preview-tab-pane" type="button" role="tab" aria-controls="methods-preview-tab-pane" aria-selected="true">Preview</button></li>
+                    <li class="nav-item" role="presentation"><button class="nav-link" id="methods-code-tab" data-bs-toggle="tab" data-bs-target="#methods-code-tab-pane" type="button" role="tab" aria-controls="methods-code-tab-pane" aria-selected="false">Code</button></li>
+                  </ul>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Methods</h5>
+                  <div class="tab-content">
+                    <div class="tab-pane show active" id="methods-preview-tab-pane" role="tabpanel" aria-labelledby="methods-preview-tab">
+                      <div class="vstack gap-3">
+                        <input type="text" class="form-control" id="example" value="red,green,blue" />
+                        <div class="hstack gap-3 flex-wrap">
+                          <button class="btn btn-sm btn-secondary" type="button" id="addValue1"><code class="text-white">addValue(&#x27;cyan&#x27;)</code></button>
+                          <button class="btn btn-sm btn-secondary" type="button" id="addValue2"><code class="text-white">addValue([&#x27;light&#x27;, &#x27;dark&#x27;])</code></button>
+                          <button class="btn btn-sm btn-secondary" type="button" id="removeValue1"><code class="text-white">removeValue(&#x27;cyan&#x27;)</code></button>
+                          <button class="btn btn-sm btn-secondary" type="button" id="removeValue2"><code class="text-white">removeValue([&#x27;light&#x27;, &#x27;dark&#x27;])</code></button>
+                          <button class="btn btn-sm btn-secondary" type="button" id="getValue"><code class="text-white">getValue()</code></button>
+                          <button class="btn btn-sm btn-secondary" type="button" id="getValues"><code class="text-white">getValues()</code></button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="tab-pane" id="methods-code-tab-pane" role="tabpanel" aria-labelledby="methods-code-tab">
+                      <pre><code class="language-html">&lt;input type=&quot;text&quot; className=&quot;form-control&quot; defaultValue=&quot;red,green,blue&quot; id=&quot;example-methods&quot; /&gt;
+&lt;button className=&quot;btn btn-sm btn-secondary&quot; type=&quot;button&quot; id=&quot;addValue1&quot;&gt;addValue(&#x27;cyan&#x27;)&lt;/button&gt;
+&lt;button className=&quot;btn btn-sm btn-secondary&quot; type=&quot;button&quot; id=&quot;addValue2&quot;&gt;addValue([&#x27;light&#x27;, &#x27;dark&#x27;])&lt;/button&gt;
+&lt;button className=&quot;btn btn-sm btn-secondary&quot; type=&quot;button&quot; id=&quot;removeValue1&quot;&gt;removeValue(&#x27;cyan&#x27;)&lt;/button&gt;
+&lt;button className=&quot;btn btn-sm btn-secondary&quot; type=&quot;button&quot; id=&quot;removeValue2&quot;&gt;removeValue([&#x27;light&#x27;, &#x27;dark&#x27;])&lt;/button&gt;
+&lt;button className=&quot;btn btn-sm btn-secondary&quot; type=&quot;button&quot; id=&quot;getValue&quot;&gt;getValue()&lt;/button&gt;
+&lt;button className=&quot;btn btn-sm btn-secondary&quot; type=&quot;button&quot; id=&quot;getValues&quot;&gt;getValues()&lt;/button&gt;
+
+&lt;script&gt;
+  const example = UseBootstrapTag(document.getElementById(&#x27;example-methods&#x27;))
+
+  document.getElementById(&#x27;addValue1&#x27;).addEventListener(&#x27;click&#x27;, () =&gt; {
+    example.addValue(&#x27;cyan&#x27;)
+  })
+  document.getElementById(&#x27;addValue2&#x27;).addEventListener(&#x27;click&#x27;, () =&gt; {
+    example.addValue([&#x27;light&#x27;, &#x27;dark&#x27;])
+  })
+  document.getElementById(&#x27;removeValue1&#x27;).addEventListener(&#x27;click&#x27;, () =&gt; {
+    example.removeValue(&#x27;cyan&#x27;)
+  })
+  document.getElementById(&#x27;removeValue2&#x27;).addEventListener(&#x27;click&#x27;, () =&gt; {
+    example.removeValue([&#x27;light&#x27;, &#x27;dark&#x27;])
+  })
+  document.getElementById(&#x27;getValue&#x27;).addEventListener(&#x27;click&#x27;, () =&gt; {
+    alert(example.getValue())
+  })
+  document.getElementById(&#x27;getValues&#x27;).addEventListener(&#x27;click&#x27;, () =&gt; {
+    alert(JSON.stringify(example.getValues()))
+  })
+&lt;/script&gt;
+</code></pre>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane pt-4" id="methods-tab-pane" role="tabpanel" aria-labelledby="methods-tab" tabindex="0">
+          <h2 class="fw-bold" id="methods">Methods</h2>
+          <div class="table-responsive">
+            <table class="table table-bordered" style="max-width: 600px">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Params</th>
+                  <th>Returns</th>
+                  <th>Example</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>addValue</code></td>
+                  <td class="text-nowrap"><code>string | array</code></td>
+                  <td><code>void</code></td>
+                  <td>
+                    <pre class="mb-1"><code class="language-javascript">example.addValue(&#x27;cyan&#x27;)</code></pre>
+                    <pre class="mb-0"><code class="language-javascript">example.addValue([&#x27;light&#x27;, &#x27;dark&#x27;])</code></pre>
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>removeValue</code></td>
+                  <td><code>string | array</code></td>
+                  <td><code>void</code></td>
+                  <td>
+                    <pre class="mb-1"><code class="language-javascript">example.removeValue(&#x27;cyan&#x27;)</code></pre>
+                    <pre class="mb-0"><code class="language-javascript">example.removeValue([&#x27;light&#x27;, &#x27;dark&#x27;])</code></pre>
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>getValue</code></td>
+                  <td><code>null</code></td>
+                  <td><code>string</code></td>
+                  <td>
+                    <pre class="mb-0"><code class="language-javascript">example.getValue()</code></pre>
+                  </td>
+                </tr>
+                <tr>
+                  <td><code>getValues</code></td>
+                  <td><code>null</code></td>
+                  <td><code>array</code></td>
+                  <td>
+                    <pre class="mb-0"><code class="language-javascript">example.getValues()</code></pre>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.statically.io/gh/twbs/bootstrap/main/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="use-bootstrap-tag.min.js"></script>
+    <script src="https://cdn.statically.io/gh/PrismJS/prism/master/prism.min.js"></script>
+    <script src="https://cdn.statically.io/gh/desandro/masonry/master/dist/masonry.pkgd.min.js"></script>
+    <script>
+      document.getElementById('bs-theme').addEventListener('change', (e) => {
+        document.documentElement.setAttribute('data-bs-theme', e.target.checked ? 'dark' : 'light')
+      })
+
+      document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((el) => {
+        new bootstrap.Tooltip(el)
+      })
+
+      let initialized = false
+      document.getElementById('example-tab').addEventListener('shown.bs.tab', () => {
+        if (!initialized) {
+          document.querySelectorAll('input:not([id])').forEach((inputElement) => {
+            UseBootstrapTag(inputElement)
+          })
+          const example = UseBootstrapTag(document.getElementById('example'))
+          document.getElementById('addValue1').addEventListener('click', () => {
+            example.addValue('cyan')
+          })
+          document.getElementById('addValue2').addEventListener('click', () => {
+            example.addValue(['light', 'dark'])
+          })
+          document.getElementById('removeValue1').addEventListener('click', () => {
+            example.removeValue('cyan')
+          })
+          document.getElementById('removeValue2').addEventListener('click', () => {
+            example.removeValue(['light', 'dark'])
+          })
+          document.getElementById('getValue').addEventListener('click', () => {
+            alert(example.getValue())
+          })
+          document.getElementById('getValues').addEventListener('click', () => {
+            alert(JSON.stringify(example.getValues()))
+          })
+          const msnry = new Masonry(document.getElementById('masonry-row'), {
+            percentPosition: true,
+            transitionDuration: 0,
+          })
+          document.querySelectorAll('#masonry-row [data-bs-toggle="tab"]').forEach((tab) => {
+            tab.addEventListener('shown.bs.tab', () => {
+              msnry.layout()
+            })
+          })
+        }
+        initialized = true
+      })
+
+      void (function () {
+        document.querySelectorAll('.needs-validation').forEach((form) => {
+          form.addEventListener('submit', (event) => {
+            if (!form.checkValidity()) {
+              event.preventDefault()
+              event.stopPropagation()
+            }
+            form.classList.add('was-validated')
+          })
+        })
+      })()
+    </script>
+  </body>
+</html>

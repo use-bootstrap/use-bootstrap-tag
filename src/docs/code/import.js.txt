@@ -1,0 +1,2 @@
+import 'use-bootstrap-tag/dist/use-bootstrap-tag.css'
+import { UseBootstrapTag } from 'use-bootstrap-tag'
