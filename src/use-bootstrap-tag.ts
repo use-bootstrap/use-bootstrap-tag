@@ -135,18 +135,20 @@ function UseBootstrapTag(target: HTMLInputElement) {
     if (tagBorderRadius > 0) {
       outerSpan.style.borderRadius = `${tagBorderRadius}rem`
     }
-    const innerSpan = createElement('span', {
-      className: 'd-inline-flex',
-      innerHTML: xIcon,
-    })
     if (!isDisabled) {
-      outerSpan.style.cursor = 'default'
-      innerSpan.style.cursor = 'pointer'
-      innerSpan.onclick = () => {
-        removeValue(textContent)
+      const innerSpan = createElement('span', {
+        className: 'd-inline-flex',
+        innerHTML: xIcon,
+      })
+      if (!isDisabled) {
+        outerSpan.style.cursor = 'default'
+        innerSpan.style.cursor = 'pointer'
+        innerSpan.onclick = () => {
+          removeValue(textContent)
+        }
       }
+      outerSpan.prepend(innerSpan)
     }
-    outerSpan.prepend(innerSpan)
     return outerSpan
   }
 
