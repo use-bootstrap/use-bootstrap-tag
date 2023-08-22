@@ -36,7 +36,7 @@
       nextElement.remove();
     }
     const root = createElement("div", {
-      className: `${classRoot} ${classWrapper} ${target.classList.value}`
+      className: `${classRoot} ${classWrapper} ${target.classList.value.replace(classHidden, "")}`
     });
     if (isDisabled) {
       root.classList.add(classDisabled);
