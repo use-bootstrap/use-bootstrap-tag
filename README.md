@@ -64,6 +64,8 @@ data-ub-tag-separator
 data-ub-tag-duplicate
 data-ub-tag-transform
 data-ub-tag-enter
+data-ub-tag-variant
+data-ub-tag-x-position
 ```
 
 ```html
