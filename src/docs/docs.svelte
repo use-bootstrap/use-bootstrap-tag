@@ -22,7 +22,11 @@
     path && window.scrollTo(0, 0)
   }
   function update() {
-    path = location.pathname
+    let pathname = location.pathname
+    if (pathname !== '/' && pathname.endsWith('/')) {
+      pathname = pathname.slice(0, -1)
+    }
+    path = pathname
   }
   navaid().on('*', update).listen()
 
