@@ -25,7 +25,7 @@ After installation, you can import the library into your project as follows
 
 ```javascript
 import 'use-bootstrap-tag/dist/use-bootstrap-tag.css'
-import { UseBootstrapTag } from 'use-bootstrap-tag'
+import UseBootstrapTag from 'use-bootstrap-tag'
 ```
 
 or, since it also comes with an IIFE bundle, you can insert it directly into your HTML

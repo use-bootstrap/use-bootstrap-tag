@@ -1,0 +1,6 @@
+<label for="example-label" class="form-label">Click here to focus</label>
+<input type="text" class="form-control" value="red,green,blue" id="example-label">
+
+<script>
+  UseBootstrapTag(document.getElementById('example-label'))
+</script>

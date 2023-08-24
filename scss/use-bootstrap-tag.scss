@@ -1,0 +1,68 @@
+$name: 'use-bootstrap-tag';
+
+// Hide target
+input.#{$name}-target {
+  position: fixed;
+  left: -9999rem;
+  top: -9999rem;
+}
+
+.#{$name} {
+  input[type="text"] {
+    padding: 0;
+    outline: 0;
+    border: 0;
+    width: 4px;
+    min-width: 4px;
+    max-width: 100%;
+    background-color: transparent;
+  }
+
+  &:not(.disabled) {
+    cursor: text;
+  }
+
+  // Tags
+  >button {
+    transition: transform .15s;
+    border-radius: calc(#{$input-border-radius} - #{$input-border-width});
+
+    &.btn-sm {
+      border-radius: calc(#{$input-border-radius-sm} - #{$input-border-width});
+    }
+
+    &.btn-lg {
+      border-radius: calc(#{$input-border-radius-lg} - #{$input-border-width});
+    }
+
+    &:not(:disabled) {
+      cursor: default;
+    }
+  }
+
+  // Keep the focus style
+  &.focus {
+    color: $input-focus-color;
+    background-color: $input-focus-bg;
+    border-color: $input-focus-border-color;
+    outline: 0;
+
+    @if $enable-shadows {
+      @include box-shadow($input-box-shadow, $input-focus-box-shadow);
+    }
+
+    @else {
+      box-shadow: $input-focus-box-shadow;
+    }
+
+    &.is-valid {
+      border-color: $form-valid-border-color;
+      box-shadow: 0 0 $input-btn-focus-blur $input-focus-width rgba($form-valid-color, $input-btn-focus-color-opacity);
+    }
+
+    &.is-invalid {
+      border-color: $form-invalid-border-color;
+      box-shadow: 0 0 $input-btn-focus-blur $input-focus-width rgba($form-invalid-color, $input-btn-focus-color-opacity);
+    }
+  }
+}

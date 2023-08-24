@@ -1,7 +1,7 @@
 {
   "name": "use-bootstrap-tag",
   "type": "module",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "description": "Tag input for Bootstrap 5",
   "license": "MIT",
   "homepage": "https://use-bootstrap-tag.js.org",
@@ -14,18 +14,13 @@
     "tag input",
     "bootstrap input"
   ],
-  "exports": {
-    "import": {
-      "types": "./dist/use-bootstrap-tag.d.mts",
-      "default": "./dist/use-bootstrap-tag.mjs"
-    }
-  },
-  "main": "./dist/use-bootstrap-tag.mjs",
-  "module": "./dist/use-bootstrap-tag.mjs",
-  "types": "./dist/use-bootstrap-tag.d.mts",
+  "source": "./src/lib/use-bootstrap-tag.ts",
+  "main": "./dist/use-bootstrap-tag.esm.js",
+  "module": "./dist/use-bootstrap-tag.esm.js",
+  "types": "./dist/use-bootstrap-tag.esm.d.ts",
   "files": [
     "dist",
-    "src/style.scss"
+    "scss"
   ],
   "browserslist": [
     ">= 0.5%",
@@ -39,42 +34,44 @@
     "not Explorer <= 11"
   ],
   "scripts": {
-    "dev": "jalankan dev:* -p",
-    "dev:js:iife": "echo \"import { UseBootstrapTag } from './src/use-bootstrap-tag'; window.UseBootstrapTag = UseBootstrapTag\" | esbuild --loader=ts --bundle --outfile=dist/use-bootstrap-tag.js --log-level=error --watch=forever",
-    "dev:css": "sass --source-map --embed-sources src/use-bootstrap-tag.scss:dist/use-bootstrap-tag.css --watch",
-    "dev:docs": "halaman dev src/docs/pages --static dist --watch=src/docs/**/*,dist/**/*",
-    "build": "shx rm -rf dist && jalankan build:*",
-    "build:js": "pkgroll",
-    "build:js:min": "esbuild dist/use-bootstrap-tag.mjs --minify --outfile=dist/use-bootstrap-tag.min.mjs --log-level=silent",
-    "build:iife": "echo \"import { UseBootstrapTag } from './src/use-bootstrap-tag'; window.UseBootstrapTag = UseBootstrapTag\" | esbuild --loader=ts --bundle --outfile=dist/use-bootstrap-tag.js --log-level=silent",
-    "build:iife:min": "esbuild dist/use-bootstrap-tag.js --minify --outfile=dist/use-bootstrap-tag.min.js --log-level=silent",
-    "build:css": "sass --source-map --embed-sources src/use-bootstrap-tag.scss:dist/use-bootstrap-tag.css",
-    "build:css:prefix": "postcss dist/use-bootstrap-tag.css --use autoprefixer --map --replace",
-    "build:css:min": "esbuild dist/use-bootstrap-tag.css --minify --outfile=dist/use-bootstrap-tag.min.css --log-level=silent",
-    "build:docs": "halaman build src/docs/pages docs --pretty --static dist",
-    "lint": "eslint src",
-    "lint:fix": "eslint src --fix",
-    "serve": "halaman serve docs"
+    "dev": "vite",
+    "build": "jalankan build:*",
+    "build:js": "vite build -c vite.config.lib.ts",
+    "build:js:min": "esbuild dist/*.js --minify --outdir=dist --out-extension:.js=.min.js --tsconfig-raw='{}'",
+    "build:css": "sass --source-map --embed-sources src/lib:dist",
+    "build:css:prefix": "postcss dist/*.css --use autoprefixer --map --replace",
+    "build:css:min": "esbuild dist/*.css --minify --outdir=dist --out-extension:.css=.min.css",
+    "build:docs": "vite build",
+    "postbuild": "presite --minify --quiet ./docs && shx rm -rf docs && shx mv .presite docs",
+    "preview": "vite preview",
+    "check": "svelte-check --tsconfig ./tsconfig.json && eslint . --ext ts"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "0.40.2",
+    "@antfu/eslint-config": "0.41.0",
+    "@fontsource/hind-siliguri": "5.0.8",
+    "@sveltejs/vite-plugin-svelte": "2.4.5",
+    "@tsconfig/svelte": "5.0.0",
     "@types/bootstrap": "5.2.6",
-    "@types/node": "20.5.1",
-    "@types/react": "18.2.20",
+    "@types/node": "20.5.4",
+    "@types/prismjs": "1.26.0",
     "autoprefixer": "10.4.15",
     "bootstrap": "5.3.1",
     "esbuild": "0.19.2",
     "eslint": "8.47.0",
-    "eslint-plugin-react": "7.33.2",
-    "halaman": "0.2.4",
     "jalankan": "0.0.1",
-    "pkgroll": "1.11.0",
+    "navaid": "1.2.0",
     "postcss": "8.4.28",
     "postcss-cli": "10.1.0",
-    "react": "18.2.0",
-    "react-icons": "4.10.1",
+    "presite": "2.1.2",
+    "prismjs": "1.29.0",
     "sass": "1.66.1",
+    "scule": "1.0.0",
     "shx": "0.3.4",
-    "typescript": "5.1.6"
+    "svelte": "4.2.0",
+    "svelte-check": "3.5.0",
+    "tslib": "2.6.1",
+    "typescript": "5.1.6",
+    "vite": "4.4.9",
+    "vite-plugin-dts": "3.5.2"
   }
 }

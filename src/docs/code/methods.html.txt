@@ -1,10 +1,10 @@
-<input type="text" className="form-control" defaultValue="red,green,blue" id="example-methods" />
-<button className="btn btn-sm btn-secondary" type="button" id="addValue1">addValue('cyan')</button>
-<button className="btn btn-sm btn-secondary" type="button" id="addValue2">addValue(['light', 'dark'])</button>
-<button className="btn btn-sm btn-secondary" type="button" id="removeValue1">removeValue('cyan')</button>
-<button className="btn btn-sm btn-secondary" type="button" id="removeValue2">removeValue(['light', 'dark'])</button>
-<button className="btn btn-sm btn-secondary" type="button" id="getValue">getValue()</button>
-<button className="btn btn-sm btn-secondary" type="button" id="getValues">getValues()</button>
+<input type="text" class="form-control" value="red,green,blue" id="example-methods" />
+<button class="btn btn-sm btn-success" type="button" id="addValue1">addValue('cyan')</button>
+<button class="btn btn-sm btn-success" type="button" id="addValue2">addValue(['light', 'dark'])</button>
+<button class="btn btn-sm btn-warning" type="button" id="removeValue1">removeValue('cyan')</button>
+<button class="btn btn-sm btn-warning" type="button" id="removeValue2">removeValue(['light', 'dark'])</button>
+<button class="btn btn-sm btn-info" type="button" id="getValue">getValue()</button>
+<button class="btn btn-sm btn-info" type="button" id="getValues">getValues()</button>
 
 <script>
   const example = UseBootstrapTag(document.getElementById('example-methods'))

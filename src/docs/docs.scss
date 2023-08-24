@@ -1,0 +1,23 @@
+body {
+  font-family: 'Hind Siliguri', sans-serif;
+}
+
+.nav-tabs .nav-link {
+  transition: none;
+}
+
+pre[class*=language-] {
+  font-size: 0.75rem;
+  border-radius: var(--bs-border-radius);
+  background: #2b3035;
+  margin: 0;
+  margin-bottom: 2rem;
+}
+
+[data-bs-theme="light"] {
+  --bs-link-color: var(--bs-dark);
+}
+
+[data-bs-theme="dark"] {
+  --bs-link-color: var(--bs-light);
+}
