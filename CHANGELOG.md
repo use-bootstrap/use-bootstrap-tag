@@ -1,3 +1,6 @@
+v1.0.1
+  - Fixed docs
+
 v1.0.0
   - Named export to default export.
   - Added transition.

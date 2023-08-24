@@ -1,7 +1,7 @@
 {
   "name": "use-bootstrap-tag",
   "type": "module",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Tag input for Bootstrap 5",
   "license": "MIT",
   "homepage": "https://use-bootstrap-tag.js.org",
