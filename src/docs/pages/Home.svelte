@@ -11,6 +11,10 @@
       alt: 'minified + gzip',
     },
     {
+      src: 'npm/dm',
+      alt: 'downloads per month',
+    },
+    {
       src: 'npm/types',
       alt: 'types',
     },
@@ -22,7 +26,10 @@
   <p>{description}</p>
   <div class="d-flex flex-wrap gap-2">
     {#each badges as badge}
-      <img src={`https://badgen.net/${badge.src}/${name}`} alt={badge.alt} />
+      <img
+        src={`https://img.shields.io/${badge.src}/${name}`}
+        alt={badge.alt}
+      />
     {/each}
   </div>
   <hr />
