@@ -84,6 +84,7 @@
     style, so anything you change in bootstrap automatically changes
     use-bootstrap-tag style as well. Read more about customize bootstrap styles
     at <a
+      class="text-break"
       href="https://getbootstrap.com/docs/5.3/customize/sass/"
       target="_blank">https://getbootstrap.com/docs/5.3/customize/sass/</a
     >.
