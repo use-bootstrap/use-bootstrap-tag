@@ -1,3 +1,6 @@
+v1.0.2
+  - Fixed lost focus after deleting the focused tag with the backspace or delete key (Firefox only).
+
 v1.0.1
   - Fixed docs
 
