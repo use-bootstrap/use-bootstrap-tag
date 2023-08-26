@@ -45,6 +45,9 @@
   $: if (textFocus) {
     textElement.focus()
   }
+  $: if (tagActiveIndex >= 0) {
+    getTagElement(tagActiveIndex + 1).focus()
+  }
 
   inputElement.classList.add(`${name}-target`)
   inputElement.tabIndex = -1
@@ -116,8 +119,10 @@
   }
   async function handleTagKeyup(e: KeyboardEvent) {
     if (e.key === keyBackspace || e.key === 'Delete') {
-      handleRemove(+(e.target as HTMLButtonElement).dataset.index)
+      const index = +(e.target as HTMLButtonElement).dataset.index
+      handleRemove(index)
       await tick()
+      tagActiveIndex = values.length === index ? index - 1 : index
       if (tagActiveIndex === -1) {
         textFocus = true
       }
@@ -125,15 +130,11 @@
   }
   function handleExists(existingIndex: number[]) {
     existingIndex.forEach((index) => {
-      const tag = root.querySelector<HTMLButtonElement>(
-        `button:nth-child(${index + 1})`
-      )
-      if (tag) {
-        tag.style.transform = 'scale(1.1)'
-        setTimeout(() => {
-          tag.style.transform = 'none'
-        }, 150)
-      }
+      const tag = getTagElement(index + 1)
+      tag.style.transform = 'scale(1.1)'
+      setTimeout(() => {
+        tag.style.transform = 'none'
+      }, 150)
     })
   }
   function appendTag(force = false) {
@@ -177,6 +178,9 @@
       appendTag(true)
       e.preventDefault() // prevent form submit
     }
+  }
+  function getTagElement(index: number) {
+    return root.querySelector<HTMLButtonElement>(`button:nth-child(${index})`)
   }
 </script>
 
