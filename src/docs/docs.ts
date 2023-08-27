@@ -1,4 +1,4 @@
-import * as bootstrap from 'bootstrap'
+import 'bootstrap/js/dist/tab'
 import prism from 'prismjs'
 import Docs from './docs.svelte'
 import '@fontsource/hind-siliguri/latin.css'
@@ -7,7 +7,6 @@ import 'prismjs/themes/prism-tomorrow.min.css'
 import '../lib/use-bootstrap-tag.scss'
 import './docs.scss'
 
-window.bootstrap = bootstrap
 prism.manual = true
 
 const target = document.getElementById('app')
