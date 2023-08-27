@@ -63,7 +63,12 @@
       {name}
     </a>
     <div class="ms-auto navbar-nav align-items-center gap-3">
-      <a class="fs-5 nav-link p-0" href={repository} target="_blank">
+      <a
+        class="fs-5 nav-link p-0"
+        href={repository}
+        target="_blank"
+        aria-label="GitHub Project"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="1em"
@@ -133,35 +138,38 @@
   style="border-bottom: var(--bs-border-width) solid var(--bs-border-color)"
 >
   <div class="container pt-3">
-    <ul class="nav nav-tabs" style="margin-bottom: -1px">
-      <li class="nav-item">
-        <a class="nav-link" class:active={path === '/'} href="/">Home</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" class:active={path === '/install'} href="/install"
-          >Install</a
-        >
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" class:active={path === '/demo'} href="/demo">Demo</a
-        >
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" class:active={path === '/api'} href="/api">API</a>
-      </li>
-      <li class="nav-item">
-        <a
-          class="nav-link"
-          class:active={path === '/customize'}
-          href="/customize">Customize</a
-        >
-      </li>
-    </ul>
+    <nav style="margin-bottom: -1px">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link" class:active={path === '/'} href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" class:active={path === '/install'} href="/install"
+            >Install</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" class:active={path === '/demo'} href="/demo"
+            >Demo</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" class:active={path === '/api'} href="/api">API</a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            class:active={path === '/customize'}
+            href="/customize">Customize</a
+          >
+        </li>
+      </ul>
+    </nav>
   </div>
 </div>
 
 <div class="container py-3">
-  <div class="pt-4">
+  <div class="pt-4" role="main">
     <svelte:component this={routes[path]} />
   </div>
 </div>

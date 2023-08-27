@@ -33,7 +33,7 @@
     {/each}
   </div>
   <hr />
-  <h5 class="fw-bold">Features</h5>
+  <h4 class="fw-bold">Features</h4>
   <ul class="text-body-secondary">
     <li>
       <b>Custom separator</b>
@@ -58,12 +58,12 @@
     </li>
   </ul>
   <hr />
-  <h5 class="fw-bold">Repository</h5>
+  <h4 class="fw-bold">Repository</h4>
   <a class="link-body-emphasis" href={repository} target="_blank"
     >{repository}</a
   >
   <hr />
-  <h5 class="fw-bold">License</h5>
+  <h4 class="fw-bold">License</h4>
   {license}
   <div class="d-flex justify-content-between gap-3">
     <span />
