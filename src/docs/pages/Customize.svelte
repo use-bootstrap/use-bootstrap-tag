@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte'
   import prism from 'prismjs'
+  import { name } from '../../../package.json'
 
   onMount(() => {
     prism.highlightAll()
@@ -21,7 +22,7 @@
 │   └── bootstrap/
 │       ├── js/
 │       └── scss/
-│   └── use-bootstrap-tag/
+│   └── {name}/
 │       ├── dist/
 │       └── scss/
 └── index.html</code
@@ -38,7 +39,7 @@
 // Include any default variable overrides here (though functions won't be available)
 
 @import "../node_modules/bootstrap/scss/bootstrap";
-@import "../node_modules/use-bootstrap-tag/scss/use-bootstrap-tag";
+@import "../node_modules/{name}/scss/{name}";
 
 // Then add additional custom code here</code
     ></pre>
@@ -74,16 +75,16 @@
 // 7. Optionally include utilities API last to generate classes based on the Sass map in `_utilities.scss`
 @import "../node_modules/bootstrap/scss/utilities/api";
 
-// 8. Include use-bootstrap-tag
-@import "../node_modules/use-bootstrap-tag/scss/use-bootstrap-tag";
+// 8. Include {name}
+@import "../node_modules/{name}/scss/{name}";
 
 // 9. Add additional custom code here</code
     ></pre>
   <p>
-    By default, use-bootstrap-tag inherits its style from default bootstrap
-    style, so anything you change in bootstrap automatically changes
-    use-bootstrap-tag style as well. Read more about customize bootstrap styles
-    at <a
+    By default, {name} inherits its style from default bootstrap style, so anything
+    you change in bootstrap automatically changes
+    {name} style as well. Read more about customize bootstrap styles at
+    <a
       class="text-break"
       href="https://getbootstrap.com/docs/5.3/customize/sass/"
       target="_blank">https://getbootstrap.com/docs/5.3/customize/sass/</a
