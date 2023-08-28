@@ -160,7 +160,7 @@
               <input
                 type="text"
                 class="form-control"
-                placeholder="Add a color then press comma"
+                placeholder="Add a tag then press comma"
               />
             </div>
             <div
@@ -217,7 +217,7 @@
               <input
                 type="text"
                 class="form-control"
-                placeholder="Add a color then press space"
+                placeholder="Add a tag then press space"
                 data-ub-tag-separator=" "
               />
             </div>
