@@ -31,14 +31,13 @@
   let tagActiveIndex = -1
 
   $: values = value.split(options.separator).filter((i) => i !== '')
+  $: placeholder = values.length ? '' : inputElement.placeholder
   $: if (textElement) {
     const canvas = document.createElement('canvas')
     const context = canvas.getContext('2d')
     if (context) {
       context.font = getComputedStyle(textElement).font
-      textWidth = context.measureText(
-        text || textElement.placeholder || ''
-      ).width
+      textWidth = context.measureText(text || placeholder).width
     }
     canvas.remove()
   }
@@ -238,7 +237,7 @@
   {/each}
   <input
     type="text"
-    placeholder={inputElement.placeholder}
+    {placeholder}
     bind:this={textElement}
     bind:value={text}
     style:width={`${textWidth}px`}
