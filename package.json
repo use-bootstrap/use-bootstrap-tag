@@ -35,6 +35,7 @@
   ],
   "scripts": {
     "dev": "vite",
+    "prebuild": "svelte-check --tsconfig ./tsconfig.json && eslint . --ext ts",
     "build": "jalankan build:*",
     "build:js": "vite build -c vite.config.lib.ts",
     "build:js:min": "esbuild dist/*.js --minify --outdir=dist --out-extension:.js=.min.js --tsconfig-raw='{}'",
@@ -43,16 +44,15 @@
     "build:css:min": "esbuild dist/*.css --minify --outdir=dist --out-extension:.css=.min.css",
     "build:docs": "vite build",
     "postbuild": "presite --minify --quiet ./docs && shx rm -rf docs && shx mv .presite docs && purgecss --css docs/assets/*.css --content docs/**/*.{html,js} --output docs/assets/",
-    "preview": "vite preview",
-    "check": "svelte-check --tsconfig ./tsconfig.json && eslint . --ext ts"
+    "preview": "vite preview"
   },
   "devDependencies": {
     "@antfu/eslint-config": "0.41.0",
     "@fontsource/hind-siliguri": "5.0.8",
     "@sveltejs/vite-plugin-svelte": "2.4.5",
-    "@tsconfig/svelte": "5.0.0",
+    "@tsconfig/svelte": "5.0.2",
     "@types/bootstrap": "5.2.6",
-    "@types/node": "20.5.6",
+    "@types/node": "20.5.7",
     "@types/prismjs": "1.26.0",
     "autoprefixer": "10.4.15",
     "bootstrap": "5.3.1",
@@ -69,10 +69,10 @@
     "scule": "1.0.0",
     "shx": "0.3.4",
     "svelte": "4.2.0",
-    "svelte-check": "3.5.0",
+    "svelte-check": "3.5.1",
     "tslib": "2.6.2",
     "typescript": "5.2.2",
     "vite": "4.4.9",
-    "vite-plugin-dts": "3.5.2"
+    "vite-plugin-dts": "3.5.3"
   }
 }
