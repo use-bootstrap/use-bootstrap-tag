@@ -28,15 +28,19 @@
   let textElement: HTMLInputElement | undefined
   let textWidth = 0
   let textFocus = false
+  let textFont = ''
   let tagActiveIndex = -1
 
   $: values = value.split(options.separator).filter((i) => i !== '')
   $: placeholder = values.length ? '' : inputElement.placeholder
   $: if (textElement) {
+    if (textFont === '') {
+      textFont = getComputedStyle(textElement).font
+    }
     const canvas = document.createElement('canvas')
     const context = canvas.getContext('2d')
     if (context) {
-      context.font = getComputedStyle(textElement).font
+      context.font = textFont
       textWidth = context.measureText(text || placeholder).width
     }
     canvas.remove()
