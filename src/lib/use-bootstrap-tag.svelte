@@ -45,7 +45,7 @@
     }
     canvas.remove()
   }
-  $: if (textFocus) {
+  $: if (textFocus && textElement) {
     textElement.focus()
   }
   $: if (tagActiveIndex >= 0) {
@@ -70,7 +70,7 @@
   function toggleValidationClasses() {
     valid = false
     invalid = false
-    if (inputElement.form.classList.contains('was-validated')) {
+    if (inputElement?.form?.classList.contains('was-validated')) {
       if (inputElement.validity.valid) {
         valid = true
       } else {
@@ -87,7 +87,7 @@
         }
       })
     })
-    observer.observe(inputElement.form, {
+    observer.observe(inputElement.form!, {
       attributes: true,
       attributeFilter: ['class'],
     })
@@ -101,7 +101,7 @@
     const tag = e.target as HTMLButtonElement
     focus = true
     tag.classList.add('active')
-    tagActiveIndex = +tag.dataset.index
+    tagActiveIndex = +tag.dataset.index!
   }
   function handleTagBlur(e: FocusEvent) {
     const tag = e.target as HTMLButtonElement
@@ -122,7 +122,7 @@
   }
   async function handleTagKeyup(e: KeyboardEvent) {
     if (e.key === keyBackspace || e.key === 'Delete') {
-      const index = +(e.target as HTMLButtonElement).dataset.index
+      const index = +(e.target as HTMLButtonElement).dataset.index!
       handleRemove(index)
       await tick()
       tagActiveIndex = values.length === index ? index - 1 : index
@@ -183,7 +183,7 @@
     }
   }
   function getTagElement(index: number) {
-    return root.querySelector<HTMLButtonElement>(`button:nth-child(${index})`)
+    return root.querySelector<HTMLButtonElement>(`button:nth-child(${index})`)!
   }
 </script>
 

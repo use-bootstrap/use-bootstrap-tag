@@ -52,7 +52,7 @@
           event.stopPropagation()
           if (form.checkValidity()) {
             alert(
-              (event.target as HTMLFormElement).querySelector('input').value
+              (event.target as HTMLFormElement).querySelector('input')!.value
             )
           }
           form.classList.add('was-validated')

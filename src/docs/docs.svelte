@@ -37,7 +37,7 @@
     '/demo': Demo,
     '/api': Api,
     '/customize': Customize,
-  }
+  } as Record<string, typeof Home>
 </script>
 
 <nav

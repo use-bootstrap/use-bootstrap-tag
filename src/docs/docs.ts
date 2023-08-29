@@ -9,7 +9,7 @@ import './docs.scss'
 
 prism.manual = true
 
-const target = document.getElementById('app')
+const target = document.getElementById('app')!
 target.innerHTML = ''
 
 const app = new Docs({
