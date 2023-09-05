@@ -1,25 +1,33 @@
-<input type="text" class="form-control" value="red,green,blue" id="example-methods" />
-<button class="btn btn-sm btn-success" type="button" id="addValue1">addValue('cyan')</button>
-<button class="btn btn-sm btn-success" type="button" id="addValue2">addValue(['light', 'dark'])</button>
-<button class="btn btn-sm btn-warning" type="button" id="removeValue1">removeValue('cyan')</button>
-<button class="btn btn-sm btn-warning" type="button" id="removeValue2">removeValue(['light', 'dark'])</button>
+<input type="text" class="form-control" value="html,css,js" id="example-methods" />
+<button class="btn btn-sm btn-success" type="button" id="addValue-string">addValue('react')</button>
+<button class="btn btn-sm btn-success" type="button" id="addValue-string-with-separator">addValue('vue,svelte')</button>
+<button class="btn btn-sm btn-success" type="button" id="addValue-array">addValue(['solid', 'qwik'])</button>
+<button class="btn btn-sm btn-warning" type="button" id="removeValue-string">removeValue('react')</button>
+<button class="btn btn-sm btn-warning" type="button" id="removeValue-string-with-separator">removeValue('vue,svelte')</button>
+<button class="btn btn-sm btn-warning" type="button" id="removeValue-array">removeValue(['solid', 'qwik'])</button>
 <button class="btn btn-sm btn-info" type="button" id="getValue">getValue()</button>
 <button class="btn btn-sm btn-info" type="button" id="getValues">getValues()</button>
 
 <script>
   const example = UseBootstrapTag(document.getElementById('example-methods'))
 
-  document.getElementById('addValue1').addEventListener('click', () => {
-    example.addValue('cyan')
+  document.getElementById('addValue-string').addEventListener('click', () => {
+    example.addValue('react')
   })
-  document.getElementById('addValue2').addEventListener('click', () => {
-    example.addValue(['light', 'dark'])
+  document.getElementById('addValue-string-with-separator').addEventListener('click', () => {
+    example.addValue('vue,svelte')
   })
-  document.getElementById('removeValue1').addEventListener('click', () => {
-    example.removeValue('cyan')
+  document.getElementById('addValue-array').addEventListener('click', () => {
+    example.addValue(['solid', 'qwik'])
   })
-  document.getElementById('removeValue2').addEventListener('click', () => {
-    example.removeValue(['light', 'dark'])
+  document.getElementById('removeValue-string').addEventListener('click', () => {
+    example.removeValue('react')
+  })
+  document.getElementById('removeValue-string-with-separator').addEventListener('click', () => {
+    example.removeValue('vue,svelte')
+  })
+  document.getElementById('removeValue-array').addEventListener('click', () => {
+    example.removeValue(['solid', 'qwik'])
   })
   document.getElementById('getValue').addEventListener('click', () => {
     alert(example.getValue())

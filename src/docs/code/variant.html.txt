@@ -1,5 +1,5 @@
 <!-- Using data-ub-tag-variant attribute: -->
-<input type="text" class="form-control" value="red,green,blue" data-ub-tag-variant="primary" id="example-variant">
+<input type="text" class="form-control" value="html,css,js" data-ub-tag-variant="primary" id="example-variant">
 <!-- Available variants: secondary (default), primary, success, danger, warning, info, dark, light -->
 
 <script>

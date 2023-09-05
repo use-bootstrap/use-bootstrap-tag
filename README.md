@@ -63,13 +63,12 @@ All options are embedded in attributes:
 data-ub-tag-separator
 data-ub-tag-duplicate
 data-ub-tag-transform
-data-ub-tag-enter
 data-ub-tag-variant
 data-ub-tag-x-position
 ```
 
 ```html
-<input class="form-control" data-ub-tag-separator=" " data-ub-tag-duplicate data-ub-tag-transform="input => input.toUpperCase()" data-ub-tag-enter data-ub-tag-variant="primary" data-ub-tag-x-position="left">
+<input class="form-control" data-ub-tag-separator=" " data-ub-tag-duplicate data-ub-tag-transform="input => input.toUpperCase()" data-ub-tag-variant="primary" data-ub-tag-x-position="left">
 ```
 ## Methods
 

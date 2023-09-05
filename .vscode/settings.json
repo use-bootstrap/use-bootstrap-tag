@@ -2,6 +2,7 @@
   "files.associations": {
     "*.html.txt": "html",
     "*.css.txt": "css",
+    "*.scss.txt": "scss",
     "*.js.txt": "javascript",
   },
 }

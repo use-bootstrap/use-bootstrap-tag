@@ -1,4 +1,4 @@
-<input type="text" class="form-control" value="red,green,blue" id="example-basic">
+<input type="text" class="form-control" value="html,css,js" id="example-basic">
 
 <script>
   UseBootstrapTag(document.getElementById('example-basic'))

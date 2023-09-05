@@ -1,6 +1,6 @@
-<input type="text" class="form-control example-sizing form-control-sm" value="red,green,blue">
-<input type="text" class="form-control example-sizing" value="red,green,blue">
-<input type="text" class="form-control example-sizing form-control-lg" value="red,green,blue">
+<input type="text" class="form-control example-sizing form-control-sm" value="html,css,js">
+<input type="text" class="form-control example-sizing" value="html,css,js">
+<input type="text" class="form-control example-sizing form-control-lg" value="html,css,js">
 
 <script>
   for (const input of document.querySelectorAll('.example-sizing')) {

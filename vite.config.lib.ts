@@ -2,7 +2,7 @@ import { resolve } from 'node:path'
 import { rename } from 'node:fs/promises'
 import { defineConfig } from 'vite'
 import { pascalCase } from 'scule'
-import { svelte } from '@sveltejs/vite-plugin-svelte'
+import solid from 'vite-plugin-solid'
 import dts from 'vite-plugin-dts'
 import pkg from './package.json'
 
@@ -19,7 +19,7 @@ export default defineConfig({
     },
   },
   plugins: [
-    svelte(),
+    solid(),
     dts({
       include: pkg.source,
       insertTypesEntry: true,

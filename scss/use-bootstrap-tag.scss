@@ -1,31 +1,52 @@
 $name: 'use-bootstrap-tag';
+$target: #{$name}-target;
+$duplicate-transform: 'scale(1.1)';
 
 // Hide target
-input.#{$name}-target {
+.#{$target} {
   position: fixed;
   left: -9999rem;
   top: -9999rem;
 }
 
 .#{$name} {
+  .input-wrapper {
+    position: relative;
+    min-width: 4px;
+    flex-grow: 1;
+    white-space: nowrap;
+
+    >span {
+      visibility: hidden;
+    }
+  }
+
   input[type="text"] {
+    position: absolute;
+    top: 0;
+    left: 0;
     padding: 0;
     outline: 0;
     border: 0;
-    width: 4px;
-    min-width: 4px;
-    max-width: 100%;
+    width: 100%;
     background-color: transparent;
   }
 
-  &:not(.disabled) {
+  .#{$target}:not(:disabled) + & {
     cursor: text;
   }
 
   // Tags
   >button {
-    transition: transform .15s;
+    transition-property: transform, height;
+    transition-duration: .15s;
+    transition-timing-function: cubic-bezier(.17, .84, .44, 1);
     border-radius: calc(#{$input-border-radius} - #{$input-border-width});
+    overflow-wrap: anywhere;
+
+    &.duplicate {
+      transform: #{$duplicate-transform};
+    }
 
     &.btn-sm {
       border-radius: calc(#{$input-border-radius-sm} - #{$input-border-width});
@@ -40,7 +61,7 @@ input.#{$name}-target {
     }
   }
 
-  // Keep the focus style
+  // Keep the focus style. Source: bootstrap/scss/forms/_form-control.scss:34
   &.focus {
     color: $input-focus-color;
     background-color: $input-focus-bg;
@@ -54,15 +75,42 @@ input.#{$name}-target {
     @else {
       box-shadow: $input-focus-box-shadow;
     }
+  }
 
-    &.is-valid {
-      border-color: $form-valid-border-color;
-      box-shadow: 0 0 $input-btn-focus-blur $input-focus-width rgba($form-valid-color, $input-btn-focus-color-opacity);
-    }
+}
 
-    &.is-invalid {
-      border-color: $form-invalid-border-color;
-      box-shadow: 0 0 $input-btn-focus-blur $input-focus-width rgba($form-invalid-color, $input-btn-focus-color-opacity);
+// Source: bootstrap/scss/mixins/_forms.scss:58
+@mixin use-bootstrap-tag-form-validation-state($state,
+  $color,
+  $icon,
+  $tooltip-color: color-contrast($color),
+  $tooltip-bg-color: rgba($color, $form-feedback-tooltip-opacity),
+  $focus-box-shadow: 0 0 $input-btn-focus-blur $input-focus-width rgba($color, $input-btn-focus-color-opacity),
+  $border-color: $color) {
+  .form-control {
+    @include form-validation-state-selector($state) {
+      +.#{$name} {
+        border-color: $border-color;
+
+        @if $enable-validation-icons {
+          padding-right: $input-height-inner;
+          background-image: escape-svg($icon);
+          background-repeat: no-repeat;
+          background-position: right $input-height-inner-quarter center;
+          background-size: $input-height-inner-half $input-height-inner-half;
+        }
+
+        &.focus {
+          border-color: $border-color;
+          box-shadow: $focus-box-shadow;
+        }
+      }
     }
   }
+}
+
+// Source: bootstrap/scss/forms/_validation.css:9
+@each $state,
+$data in $form-validation-states {
+  @include use-bootstrap-tag-form-validation-state($state, $data...);
 }
