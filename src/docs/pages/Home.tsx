@@ -1,5 +1,5 @@
 import { For } from 'solid-js'
-import { description, license, name, repository } from '../../../package.json'
+import { description, license, name, repository, version } from '../../../package.json'
 
 export default function Home() {
   const badges = [
@@ -27,7 +27,7 @@ export default function Home() {
       <p>{description}</p>
       <div class="d-flex flex-wrap gap-2">
         <For each={badges}>{badge =>
-          <img src={`https://img.shields.io/${badge.src}/${name}`} alt={badge.alt} />
+          <img src={`https://img.shields.io/${badge.src}/${name}${badge.src.startsWith('bundle') ? `/${version}` : ''}`} alt={badge.alt} />
         }</For>
       </div>
       <hr />
