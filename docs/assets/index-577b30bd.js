@@ -110,7 +110,7 @@ import UseBootstrapTag from 'use-bootstrap-tag'
 <\/script>
 `,Qa=`<form class="needs-validation vstack gap-3" novalidate>
   <div>
-    <input type="text" class="form-control example-validation" name="tags" placeholder="Add a tag" data-ub-tag-enter required id="example-validation" />
+    <input type="text" class="form-control example-validation" name="tags" placeholder="Add a tag" required id="example-validation" />
     <div class="invalid-feedback">This field is required.</div>
     <div class="valid-feedback">Looks good!</div>
   </div>
