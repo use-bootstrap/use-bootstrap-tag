@@ -1,3 +1,6 @@
+v2.0.1
+  - Some rendering improvements.
+
 v2.0.0
   - Rewrite project back to vanilla-js to improve performance and reduce size.
   - Pressing Enter is now the default action for adding a tag. Previously, users had to include an attribute option.
