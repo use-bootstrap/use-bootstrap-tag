@@ -3,7 +3,7 @@
 <input type="text" class="form-control example-sizing form-control-lg" value="html,css,js">
 
 <script>
-  for (const input of document.querySelectorAll('.example-sizing')) {
+  document.querySelectorAll('.example-sizing').forEach((input) => {
     UseBootstrapTag(input)
-  }
+  })
 </script>

@@ -1,3 +1,6 @@
+v2.1.0
+  - Added max option.
+
 v2.0.1
   - Some rendering improvements.
 

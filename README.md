@@ -3,12 +3,14 @@
 
 Tag input for Bootstrap 5
 
+Demo and documentation: [https://use-bootstrap-tag.js.org](https://use-bootstrap-tag.js.org)
 
 ## Features
 
 - **Custom separator**: Set a specific delimiter character between tag elements.
 - **Enable/disable duplicates**: Toggle the allowance of duplicate tags.
 - **Custom transformation**: Define personalized modifications to input tag entries.
+- **Max limit**: Set a maximum limit of tags that can be added.
 - **Sizing**: Adjustable sizing to match user preferences or layouts.
 - **Validation**: Reflects validation states visually to align with Bootstrap's form validation feedback.
 ## Installation
@@ -57,7 +59,7 @@ const example = UseBootstrapTag(document.getElementById('example'))
 
 ## Options
 
-All options are embedded in attributes:
+All options can be embedded in attributes:
 
 ```html
 data-ub-tag-separator
@@ -65,17 +67,27 @@ data-ub-tag-duplicate
 data-ub-tag-transform
 data-ub-tag-variant
 data-ub-tag-x-position
+data-ub-tag-max
 ```
 
 ```html
-<input class="form-control" data-ub-tag-separator=" " data-ub-tag-duplicate data-ub-tag-transform="input => input.toUpperCase()" data-ub-tag-variant="primary" data-ub-tag-x-position="left">
+<!-- example -->
+<input
+  class="form-control"
+  data-ub-tag-separator=" "
+  data-ub-tag-duplicate
+  data-ub-tag-transform="input => input.toUpperCase()"
+  data-ub-tag-variant="primary"
+  data-ub-tag-x-position="left"
+  data-ub-tag-max="5"
+>
 ```
 ## Methods
 
 | Name    | Params          | Returns         | Example                           |
 |---------|-----------------|-----------------|-----------------------------------|
-| addValue  | string \| array | void    | `example.addValue('cyan')`<br/>`example.addValue(['light', 'dark'])`    |
-| removeValue  | string \| array | void    | `example.removeValue('cyan')`<br/>`example.removeValue(['light', 'dark'])`    |
+| addValue  | string \| array | void    | `example.addValue('react')`<br/>`example.addValue('vue,svelte')`<br/>`example.addValue(['solid', 'qwik'])`    |
+| removeValue  | string \| array | void    | `example.removeValue('react')`<br/>`example.removeValue('vue,svelte')`<br/>`example.removeValue(['solid', 'qwik'])`    |
 | getValue  | null            | string  | `example.getValue()`  |
 | getValues | null            | array   | `example.getValues()` |
 

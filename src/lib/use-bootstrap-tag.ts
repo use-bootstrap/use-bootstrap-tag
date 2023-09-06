@@ -24,9 +24,16 @@ export default function UseBootstrapTag(target: HTMLInputElement) {
     xPosition: dataset.ubTagXPosition as 'left' | 'right' || 'right',
     transform: dataset.ubTagTransform || 'input => input',
     isDuplicate: dataset.ubTagDuplicate !== undefined,
+    max: +dataset.ubTagMax! > 0 ? +dataset.ubTagMax! : undefined,
   }
 
   const tags = () => root.querySelectorAll('button')
+  const animateTag = (tag: HTMLButtonElement) => {
+    tag.classList.add('duplicate')
+    setTimeout(() => {
+      tag.classList.remove('duplicate')
+    }, 150)
+  }
 
   // Returned methods
   const getValue = (): string => target.value
@@ -34,43 +41,41 @@ export default function UseBootstrapTag(target: HTMLInputElement) {
   const addValue = (value: string | string[]): void => {
     const values = getValues()
     const insert = processData(value, config.separator)
+    if (!config.max || values.length < config.max) {
+      // Get duplicates
+      const duplicates = [] as number[]
+      !config.isDuplicate && values.forEach((value, index) => insert.includes(value) && duplicates.push(index))
 
-    // Get duplicates
-    const duplicates = [] as number[]
-    !config.isDuplicate && values.forEach((value, index) => insert.includes(value) && duplicates.push(index))
-
-    // Get inserted
-    const inserted = [] as string[]
-    insert.forEach((i) => {
-      if (values.includes(i)) {
-        config.isDuplicate && inserted.push(i)
-      }
-      else {
-        inserted.push(i)
-      }
-    })
-
-    values.push(...inserted)
-    if (!arraysAreEqual(getValues(), values)) {
-      change(target, values.join(config.separator))
-      // Animate inserts
-      inserted.forEach((item) => {
-        const tag = tags()[values.lastIndexOf(item)]
-        const tagHeight = tag.offsetHeight
-        tag!.style.height = 0 as unknown as string
-        setTimeout(() => (tag.style.height = `${tagHeight}px`), 0)
-        setTimeout(() => tag.style.removeProperty('height'), 150)
+      // Get inserted
+      const inserted = [] as string[]
+      insert.forEach((i) => {
+        if (values.includes(i)) {
+          config.isDuplicate && inserted.push(i)
+        }
+        else {
+          inserted.push(i)
+        }
       })
+
+      values.push(...inserted)
+      if (!arraysAreEqual(getValues(), values)) {
+        change(target, values.join(config.separator))
+        // Animate inserts
+        inserted.forEach((item) => {
+          const tag = tags()[values.lastIndexOf(item)]
+          const tagHeight = tag.offsetHeight
+          tag!.style.height = 0 as unknown as string
+          setTimeout(() => (tag.style.height = `${tagHeight}px`), 0)
+          setTimeout(() => tag.style.removeProperty('height'), 150)
+        })
+      }
+      // Animate duplicates
+      if (!config.isDuplicate) {
+        duplicates.forEach(index => animateTag(tags()[index]))
+      }
     }
-    // Animate duplicates
-    if (!config.isDuplicate) {
-      duplicates.forEach((index) => {
-        const tag = tags()[index]
-        tag.classList.add('duplicate')
-        setTimeout(() => {
-          tag.classList.remove('duplicate')
-        }, 150)
-      })
+    else {
+      insert.length > 0 && tags().forEach(animateTag)
     }
   }
   const removeValue = (value: string | string[]): void => {

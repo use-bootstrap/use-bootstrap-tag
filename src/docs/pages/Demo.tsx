@@ -2,7 +2,7 @@
 import { onMount } from 'solid-js'
 import prism from 'prismjs'
 import codeBasic from '../code/basic.html.txt?raw'
-import codePlaceholder from '../code/placeholder.html.txt?raw'
+import codeMax from '../code/max.html.txt?raw'
 import codeSeparator from '../code/separator.html.txt?raw'
 import codeDuplicate from '../code/duplicate.html.txt?raw'
 import codeTransform from '../code/transform.html.txt?raw'
@@ -78,7 +78,10 @@ export default function Demo() {
               <h5 class="card-title">Basic</h5>
               <div class="tab-content">
                 <div class="tab-pane show active" id="basic-preview-tab-pane" role="tabpanel" aria-labelledby="basic-preview-tab">
-                  <input type="text" class="form-control" value="html,css,js" />
+                  <div class="vstack gap-3">
+                    <input type="text" class="form-control" value="html,css,js" />
+                    <input type="text" class="form-control" placeholder="Add a tag then press comma or Enter" />
+                  </div>
                 </div>
                 <div class="tab-pane" id="basic-code-tab-pane" role="tabpanel" aria-labelledby="basic-code-tab">
                   <pre><code class="language-html">{codeBasic}</code></pre>
@@ -91,18 +94,18 @@ export default function Demo() {
           <div class="card h-100">
             <div class="card-header">
               <ul class="nav nav-tabs card-header-tabs">
-                <li class="nav-item" role="presentation"><button class="nav-link active" id="placeholder-preview-tab" data-bs-toggle="tab" data-bs-target="#placeholder-preview-tab-pane" type="button" role="tab" aria-controls="placeholder-preview-tab-pane" aria-selected="true">Preview</button></li>
-                <li class="nav-item" role="presentation"><button class="nav-link" id="placeholder-code-tab" data-bs-toggle="tab" data-bs-target="#placeholder-code-tab-pane" type="button" role="tab" aria-controls="placeholder-code-tab-pane" aria-selected="false">Code</button></li>
+                <li class="nav-item" role="presentation"><button class="nav-link active" id="max-preview-tab" data-bs-toggle="tab" data-bs-target="#max-preview-tab-pane" type="button" role="tab" aria-controls="max-preview-tab-pane" aria-selected="true">Preview</button></li>
+                <li class="nav-item" role="presentation"><button class="nav-link" id="max-code-tab" data-bs-toggle="tab" data-bs-target="#max-code-tab-pane" type="button" role="tab" aria-controls="max-code-tab-pane" aria-selected="false">Code</button></li>
               </ul>
             </div>
             <div class="card-body">
-              <h5 class="card-title">Placeholder</h5>
+              <h5 class="card-title">Max limit</h5>
               <div class="tab-content">
-                <div class="tab-pane show active" id="placeholder-preview-tab-pane" role="tabpanel" aria-labelledby="placeholder-preview-tab">
-                  <input type="text" class="form-control" placeholder="Add a tag then press comma or Enter" />
+                <div class="tab-pane show active" id="max-preview-tab-pane" role="tabpanel" aria-labelledby="max-preview-tab">
+                  <input type="text" class="form-control" placeholder="Enter tags (max 3)" data-ub-tag-max="3" />
                 </div>
-                <div class="tab-pane" id="placeholder-code-tab-pane" role="tabpanel" aria-labelledby="placeholder-code-tab">
-                  <pre><code class="language-html">{codePlaceholder}</code></pre>
+                <div class="tab-pane" id="max-code-tab-pane" role="tabpanel" aria-labelledby="max-code-tab">
+                  <pre><code class="language-html">{codeMax}</code></pre>
                 </div>
               </div>
             </div>

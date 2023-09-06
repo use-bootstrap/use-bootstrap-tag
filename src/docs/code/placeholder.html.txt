@@ -1,5 +1,0 @@
-<input type="text" class="form-control" placeholder="Add a tag then press comma or Enter" id="example-placeholder">
-
-<script>
-  UseBootstrapTag(document.getElementById('example-placeholder'))
-</script>

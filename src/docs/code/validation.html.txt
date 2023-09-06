@@ -20,9 +20,9 @@
 </div>
 
 <script>
-  for (const input of document.querySelectorAll('.example-validation')) {
+  document.querySelectorAll('.example-validation').forEach((input) => {
     UseBootstrapTag(input)
-  }
+  })
 
   // Example starter JavaScript for disabling form submissions if there are invalid fields
   void (function () {
