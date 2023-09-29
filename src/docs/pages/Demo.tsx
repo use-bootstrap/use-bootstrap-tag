@@ -385,12 +385,12 @@ export default function Demo() {
         </div>
       </div>
       <div class="d-flex justify-content-between gap-3 mt-4">
-        <a href="/install" class="btn btn-link link-body-emphasis text-decoration-none border d-inline-flex flex-column align-items-start w-50">
-          <span class="text-body-secondary small">Previous page</span>
+        <a href="/install" class="btn btn-outline-secondary text-decoration-none border d-inline-flex flex-column align-items-start w-50">
+          <span class="small">Previous page</span>
           Install
         </a>
-        <a href="/api" class="btn btn-link link-body-emphasis text-decoration-none border d-inline-flex flex-column align-items-end w-50">
-          <span class="text-body-secondary small">Next page</span>
+        <a href="/api" class="btn btn-outline-secondary text-decoration-none border d-inline-flex flex-column align-items-end w-50">
+          <span class="small">Next page</span>
           API
         </a>
       </div>

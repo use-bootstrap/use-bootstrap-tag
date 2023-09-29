@@ -19,12 +19,12 @@ export default function Install() {
       <p>or, since it also comes with an IIFE bundle, you can insert it directly into your HTML:</p>
       <pre><code class="language-html">{codeIife}</code></pre>
       <div class="d-flex justify-content-between gap-3">
-        <a href="/" class="btn btn-link link-body-emphasis text-decoration-none border d-inline-flex flex-column align-items-start w-50">
-          <span class="text-body-secondary small">Previous page</span>
+        <a href="/" class="btn btn-outline-secondary text-decoration-none border d-inline-flex flex-column align-items-start w-50">
+          <span class="small">Previous page</span>
           Home
         </a>
-        <a href="/demo" class="btn btn-link link-body-emphasis text-decoration-none border d-inline-flex flex-column align-items-end w-50">
-          <span class="text-body-secondary small">Next page</span>
+        <a href="/demo" class="btn btn-outline-secondary text-decoration-none border d-inline-flex flex-column align-items-end w-50">
+          <span class="small">Next page</span>
           Demo
         </a>
       </div>

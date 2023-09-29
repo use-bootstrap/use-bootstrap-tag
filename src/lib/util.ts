@@ -1,7 +1,3 @@
-type ElementAttributes<T extends keyof HTMLElementTagNameMap> = {
-  [K in keyof HTMLElementTagNameMap[T]]?: HTMLElementTagNameMap[T][K] | Partial<CSSStyleDeclaration>
-}
-
 export function arraysAreEqual<T>(arr1: T[], arr2: T[]) {
   return arr1.length === arr2.length && arr1.every((value, index) => value === arr2[index])
 }
@@ -16,14 +12,9 @@ export function pull<T>(items: T[], value: T): void {
   i !== -1 && items.splice(i, 1)
 }
 
-export function createElement<T extends keyof HTMLElementTagNameMap>(tagName: T, config?: ElementAttributes<T>) {
+export function createElement<T extends keyof HTMLElementTagNameMap>(tagName: T, attributes?: { [K in keyof HTMLElementTagNameMap[T]]?: HTMLElementTagNameMap[T][K] }): HTMLElementTagNameMap[T] {
   const element = document.createElement(tagName)
-  if (config) {
-    for (const key in config) {
-      (element as any)[key] = config[key]
-    }
-  }
-  return element
+  return Object.assign(element, attributes)
 }
 
 export function processData(data: string | string[] | (string | string[])[], separator: string): string[] {

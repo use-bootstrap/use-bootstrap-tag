@@ -48,8 +48,8 @@ export default function Home() {
       {license}
       <div class="d-flex justify-content-between gap-3">
         <span />
-        <a href="/install" class="btn btn-link link-body-emphasis text-decoration-none border d-inline-flex flex-column align-items-end w-50">
-          <span class="text-body-secondary small">Next page</span>
+        <a href="/install" class="btn btn-outline-secondary text-decoration-none border d-inline-flex flex-column align-items-end w-50">
+          <span class="small">Next page</span>
           Install
         </a>
       </div>

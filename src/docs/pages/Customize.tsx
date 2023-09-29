@@ -21,8 +21,8 @@ export default function Customize() {
       <p>By default, {name} inherits its style from default bootstrap style, so anything you change in bootstrap automatically changes {name} style as well.</p>
       <p>Read more about customize bootstrap styles at <a class="text-break" href="https://getbootstrap.com/docs/5.3/customize/sass/" target="_blank">https://getbootstrap.com/docs/5.3/customize/sass/</a>.</p>
       <div class="d-flex justify-content-between gap-3 mt-4">
-        <a href="/api" class="btn btn-link link-body-emphasis text-decoration-none border d-inline-flex flex-column align-items-start w-50">
-          <span class="text-body-secondary small">Previous page</span>
+        <a href="/api" class="btn btn-outline-secondary text-decoration-none border d-inline-flex flex-column align-items-start w-50">
+          <span class="small">Previous page</span>
           API
         </a>
       </div>

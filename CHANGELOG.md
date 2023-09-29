@@ -1,3 +1,7 @@
+v2.1.1
+  - Updated to bootstrap v5.3.2.
+  - Small improvements.
+
 v2.1.0
   - Added max option.
 
