@@ -1,3 +1,6 @@
+v2.2.0
+  - Added no-input-onblur option.
+
 v2.1.1
   - Updated to bootstrap v5.3.2.
   - Small improvements.

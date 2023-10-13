@@ -68,6 +68,7 @@ data-ub-tag-transform
 data-ub-tag-variant
 data-ub-tag-x-position
 data-ub-tag-max
+data-ub-tag-no-input-onblur
 ```
 
 ```html
@@ -80,6 +81,7 @@ data-ub-tag-max
   data-ub-tag-variant="primary"
   data-ub-tag-x-position="left"
   data-ub-tag-max="5"
+  data-ub-tag-no-input-onblur
 >
 ```
 ## Methods

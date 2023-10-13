@@ -2,11 +2,13 @@
 import { onMount } from 'solid-js'
 import prism from 'prismjs'
 import codeBasic from '../code/basic.html.txt?raw'
+import codePlaceholder from '../code/placeholder.html.txt?raw'
 import codeMax from '../code/max.html.txt?raw'
 import codeSeparator from '../code/separator.html.txt?raw'
 import codeDuplicate from '../code/duplicate.html.txt?raw'
 import codeTransform from '../code/transform.html.txt?raw'
 import codeDisabled from '../code/disabled.html.txt?raw'
+import codeOnblur from '../code/onblur.html.txt?raw'
 import codeLabel from '../code/label.html.txt?raw'
 import codeSizing from '../code/sizing.html.txt?raw'
 import codeValidation from '../code/validation.html.txt?raw'
@@ -80,11 +82,33 @@ export default function Demo() {
                 <div class="tab-pane show active" id="basic-preview-tab-pane" role="tabpanel" aria-labelledby="basic-preview-tab">
                   <div class="vstack gap-3">
                     <input type="text" class="form-control" value="html,css,js" />
-                    <input type="text" class="form-control" placeholder="Add a tag then press comma or Enter" />
                   </div>
                 </div>
                 <div class="tab-pane" id="basic-code-tab-pane" role="tabpanel" aria-labelledby="basic-code-tab">
                   <pre><code class="language-html">{codeBasic}</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-6 col-xxl-4">
+          <div class="card h-100">
+            <div class="card-header">
+              <ul class="nav nav-tabs card-header-tabs">
+                <li class="nav-item" role="presentation"><button class="nav-link active" id="placeholder-preview-tab" data-bs-toggle="tab" data-bs-target="#placeholder-preview-tab-pane" type="button" role="tab" aria-controls="placeholder-preview-tab-pane" aria-selected="true">Preview</button></li>
+                <li class="nav-item" role="presentation"><button class="nav-link" id="placeholder-code-tab" data-bs-toggle="tab" data-bs-target="#placeholder-code-tab-pane" type="button" role="tab" aria-controls="placeholder-code-tab-pane" aria-selected="false">Code</button></li>
+              </ul>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Placeholder</h5>
+              <div class="tab-content">
+                <div class="tab-pane show active" id="placeholder-preview-tab-pane" role="tabpanel" aria-labelledby="placeholder-preview-tab">
+                  <div class="vstack gap-3">
+                    <input type="text" class="form-control" placeholder="Add a tag then press comma or Enter" />
+                  </div>
+                </div>
+                <div class="tab-pane" id="placeholder-code-tab-pane" role="tabpanel" aria-labelledby="placeholder-code-tab">
+                  <pre><code class="language-html">{codePlaceholder}</code></pre>
                 </div>
               </div>
             </div>
@@ -190,6 +214,27 @@ export default function Demo() {
                 </div>
                 <div class="tab-pane" id="disabled-code-tab-pane" role="tabpanel" aria-labelledby="disabled-code-tab">
                   <pre><code class="language-html">{codeDisabled}</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-6 col-xxl-4">
+          <div class="card h-100">
+            <div class="card-header">
+              <ul class="nav nav-tabs card-header-tabs">
+                <li class="nav-item" role="presentation"><button class="nav-link active" id="onblur-preview-tab" data-bs-toggle="tab" data-bs-target="#onblur-preview-tab-pane" type="button" role="tab" aria-controls="onblur-preview-tab-pane" aria-selected="true">Preview</button></li>
+                <li class="nav-item" role="presentation"><button class="nav-link" id="onblur-code-tab" data-bs-toggle="tab" data-bs-target="#onblur-code-tab-pane" type="button" role="tab" aria-controls="onblur-code-tab-pane" aria-selected="false">Code</button></li>
+              </ul>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">No input onblur</h5>
+              <div class="tab-content">
+                <div class="tab-pane show active" id="onblur-preview-tab-pane" role="tabpanel" aria-labelledby="onblur-preview-tab">
+                  <input type="text" class="form-control" data-ub-tag-no-input-onblur />
+                </div>
+                <div class="tab-pane" id="onblur-code-tab-pane" role="tabpanel" aria-labelledby="onblur-code-tab">
+                  <pre><code class="language-html">{codeOnblur}</code></pre>
                 </div>
               </div>
             </div>

@@ -1,7 +1,7 @@
 {
   "name": "use-bootstrap-tag",
   "type": "module",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "description": "Tag input for Bootstrap 5",
   "license": "MIT",
   "homepage": "https://use-bootstrap-tag.js.org",
@@ -50,12 +50,12 @@
     "@antfu/eslint-config": "0.43.1",
     "@fontsource/hind-siliguri": "5.0.8",
     "@types/bootstrap": "5.2.7",
-    "@types/node": "20.7.2",
+    "@types/node": "20.8.5",
     "@types/prismjs": "1.26.1",
     "autoprefixer": "10.4.16",
     "bootstrap": "5.3.2",
     "esbuild": "0.19.4",
-    "eslint": "8.50.0",
+    "eslint": "8.51.0",
     "eslint-plugin-react": "7.33.2",
     "jalankan": "0.0.1",
     "navaid": "1.2.0",
@@ -64,14 +64,14 @@
     "presite": "2.1.2",
     "prismjs": "1.29.0",
     "purgecss": "5.0.0",
-    "sass": "1.68.0",
+    "sass": "1.69.3",
     "scule": "1.0.0",
     "shx": "0.3.4",
-    "solid-js": "1.7.12",
+    "solid-js": "1.8.1",
     "tslib": "2.6.2",
     "typescript": "5.2.2",
-    "vite": "4.4.9",
+    "vite": "4.4.11",
     "vite-plugin-dts": "3.6.0",
-    "vite-plugin-solid": "2.7.0"
+    "vite-plugin-solid": "2.7.1"
   }
 }
