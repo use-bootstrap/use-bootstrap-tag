@@ -25,6 +25,7 @@ export default function UseBootstrapTag(target: HTMLInputElement) {
     transform: dataset.ubTagTransform || 'input => input',
     isDuplicate: dataset.ubTagDuplicate !== undefined,
     max: +dataset.ubTagMax! > 0 ? +dataset.ubTagMax! : undefined,
+    noInputOnblur: dataset.ubTagNoInputOnblur !== undefined,
   }
 
   const tags = () => root.querySelectorAll('button')
@@ -194,7 +195,7 @@ export default function UseBootstrapTag(target: HTMLInputElement) {
     }
     input.onblur = () => {
       setFocus(false)
-      appendTag(true)
+      config.noInputOnblur ? setText('') : appendTag(true)
     }
     input.onkeydown = (e) => {
       if (text() === '' && e.key === 'Backspace') {
