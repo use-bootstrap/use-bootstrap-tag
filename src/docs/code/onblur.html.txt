@@ -1,0 +1,6 @@
+<!-- Using data-ub-tag-no-input-onblur attribute: -->
+<input type="text" class="form-control" data-ub-tag-no-input-onblur id="example-no-input-onblur">
+
+<script>
+  UseBootstrapTag(document.getElementById('example-no-input-onblur'))
+</script>

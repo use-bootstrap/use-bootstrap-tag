@@ -21,7 +21,7 @@ export default defineConfig({
     dts({
       include: pkg.source,
       insertTypesEntry: true,
-      afterBuild: () => rename('dist/use-bootstrap-tag.d.ts', pkg.types),
+      afterBuild: () => rename(`dist/${pkg.name}.d.ts`, pkg.types),
     }),
   ],
 })

@@ -1,8 +1,5 @@
-<input type="text" class="form-control example" value="html,css,js">
-<input type="text" class="form-control example" placeholder="Add a tag then press comma or Enter" />
+<input type="text" class="form-control" value="html,css,js" id="example-basic">
 
 <script>
-  document.querySelectorAll('.example').forEach((input) => {
-    UseBootstrapTag(input)
-  })
+  UseBootstrapTag(document.getElementById('example-basic'))
 </script>

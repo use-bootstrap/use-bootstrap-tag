@@ -1,4 +1,4 @@
-<input type="text" class="form-control" value="html,css,js" id="example-methods" />
+<input type="text" class="form-control" value="html,css,js" id="example-methods">
 <button class="btn btn-sm btn-success" type="button" id="addValue-string">addValue('react')</button>
 <button class="btn btn-sm btn-success" type="button" id="addValue-string-with-separator">addValue('vue,svelte')</button>
 <button class="btn btn-sm btn-success" type="button" id="addValue-array">addValue(['solid', 'qwik'])</button>
