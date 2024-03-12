@@ -26,9 +26,9 @@ export default function Home() {
       <h3 class="fw-bold">{name}</h3>
       <p>{description}</p>
       <div class="d-flex flex-wrap gap-2">
-        <For each={badges}>{badge =>
-          <img src={`https://img.shields.io/${badge.src}/${name}${badge.src.startsWith('bundle') ? `/${version}` : ''}`} alt={badge.alt} />
-        }</For>
+        <For each={badges}>
+          {badge => <img src={`https://img.shields.io/${badge.src}/${name}${badge.src.startsWith('bundle') ? `/${version}` : ''}`} alt={badge.alt} />}
+        </For>
       </div>
       <hr />
       <h4 class="fw-bold">Features</h4>

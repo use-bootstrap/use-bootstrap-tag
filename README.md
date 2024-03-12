@@ -1,4 +1,3 @@
-
 # use-bootstrap-tag
 
 Tag input for Bootstrap 5
@@ -55,7 +54,6 @@ Once you imported the library, you can initiate it
 ```javascript
 const example = UseBootstrapTag(document.getElementById('example'))
 ```
-
 
 ## Options
 
