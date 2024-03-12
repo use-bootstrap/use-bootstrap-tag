@@ -47,12 +47,12 @@ import UseBootstrapTag from 'use-bootstrap-tag'
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Example</title>
-    <link rel="stylesheet" href="https://unpkg.com/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="node_modules/use-bootstrap-tag/dist/use-bootstrap-tag.min.css">
   </head>
   <body>
     <input type="text" class="form-control" id="example">
-    <script src="https://unpkg.com/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"><\/script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"><\/script>
     <script src="node_modules/use-bootstrap-tag/dist/use-bootstrap-tag.min.js"><\/script>
   </body>
 </html>
