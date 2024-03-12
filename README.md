@@ -38,12 +38,12 @@ or, since it also comes with an IIFE bundle, you can insert it directly into you
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Use Bootstrap Tag demo</title>
-    <link href="https://unpkg.com/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="node_modules/use-bootstrap-tag/dist/use-bootstrap-tag.min.css" rel="stylesheet">
   </head>
   <body>
     <input type="text" class="form-control" id="example">
-    <script src="https://unpkg.com/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="node_modules/use-bootstrap-tag/dist/use-bootstrap-tag.min.js"></script>
   </body>
 </html>
