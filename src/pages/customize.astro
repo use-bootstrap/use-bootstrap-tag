@@ -1,0 +1,18 @@
+---
+import Layout from '../components/Layout.astro'
+import Code from '../components/Code.astro'
+import CustomizeStructure from '../components/customize/CustomizeStructure.txt?raw'
+import CustomizeA from '../components/customize/CustomizeA.scss?raw'
+import CustomizeB from '../components/customize/CustomizeB.scss?raw'
+---
+
+<Layout title="Customize">
+  <h1>Customize</h1>
+  <p>Assuming you’re using a package manager like npm, you’ll have a file structure that looks like this:</p>
+  <Code lang="bash" code={CustomizeStructure} />
+  <p>In your <code>custom.scss</code>, you’ll import Bootstrap’s source Sass files. You have two options: include all of Bootstrap, or pick the parts you need.</p>
+  <Code lang="scss" code={CustomizeA} />
+  <Code lang="scss" code={CustomizeB} />
+  <p>By default, components inherit their styles from the default Bootstrap theme. Therefore, any changes made to Bootstrap will automatically affect the styling of these components as well.</p>
+  <p>Read more about customize bootstrap styles at <a class="text-break" href="https://getbootstrap.com/docs/5.3/customize/sass/" target="_blank">https://getbootstrap.com/docs/5.3/customize/sass/</a>.</p>
+</Layout>

@@ -1,0 +1,100 @@
+---
+import Layout from '../components/Layout.astro'
+import DemoCard from '../components/DemoCard.astro'
+import Basic from '../components/demo/Basic.astro'
+import Placeholder from '../components/demo/Placeholder.astro'
+import MaxLimit from '../components/demo/MaxLimit.astro'
+import CustomSeparator from '../components/demo/CustomSeparator.astro'
+import AllowDuplicates from '../components/demo/AllowDuplicates.astro'
+import TransformTags from '../components/demo/TransformTags.astro'
+import Disabled from '../components/demo/Disabled.astro'
+import NoInputOnblur from '../components/demo/NoInputOnblur.astro'
+import Label from '../components/demo/Label.astro'
+import XPosition from '../components/demo/XPosition.astro'
+import Sizing from '../components/demo/Sizing.astro'
+import Validation from '../components/demo/Validation.astro'
+import Methods from '../components/demo/Methods.astro'
+import Variants from '../components/demo/Variants.astro'
+
+const demo = [
+  {
+    title: 'Basic',
+    code: Basic,
+  },
+  {
+    title: 'Placeholder',
+    code: Placeholder,
+  },
+  {
+    title: 'MaxLimit',
+    code: MaxLimit,
+  },
+  {
+    title: 'CustomSeparator',
+    code: CustomSeparator,
+  },
+  {
+    title: 'AllowDuplicates',
+    code: AllowDuplicates,
+  },
+  {
+    title: 'TransformTags',
+    code: TransformTags,
+  },
+  {
+    title: 'Disabled',
+    code: Disabled,
+  },
+  {
+    title: 'NoInputOnblur',
+    code: NoInputOnblur,
+  },
+  {
+    title: 'Label',
+    code: Label,
+  },
+  {
+    title: 'XPosition',
+    code: XPosition,
+  },
+  {
+    title: 'Sizing',
+    code: Sizing,
+  },
+  {
+    title: 'Validation',
+    code: Validation,
+  },
+  {
+    title: 'Methods',
+    code: Methods,
+  },
+  {
+    title: 'Variants',
+    code: Variants,
+  },
+]
+---
+
+<Layout title="Demo">
+  <h1 class="mb-4">Demo</h1>
+  <div class="row g-4">
+    {
+      demo.map((item) => (
+        <div class="col-12 col-lg-6 col-xxl-4">
+          <DemoCard code={item.code} title={item.title}>
+            <item.code />
+          </DemoCard>
+        </div>
+      ))
+    }
+  </div>
+</Layout>
+
+<script>
+  import { Tab } from 'bootstrap-esm'
+  import UseBootstrapTag from '../lib/use-bootstrap-tag'
+  ;(window as any).bootstrap = {} as any
+  ;(window as any).bootstrap.Tab = Tab
+  ;(window as any).UseBootstrapTag = UseBootstrapTag
+</script>

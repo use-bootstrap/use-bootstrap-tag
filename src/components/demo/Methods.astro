@@ -1,0 +1,49 @@
+<input type="text" class="form-control" value="html,css,js" id="example-methods" />
+
+<div class="hstack gap-3 flex-wrap mt-3">
+  <button class="btn btn-sm btn-success" type="button" id="addValue-string">addValue('react')</button>
+  <button class="btn btn-sm btn-success" type="button" id="addValue-string-with-separator">addValue('vue,svelte')</button>
+  <button class="btn btn-sm btn-success" type="button" id="addValue-array">addValue(['solid', 'qwik'])</button>
+  <button class="btn btn-sm btn-warning" type="button" id="removeValue-string">removeValue('react')</button>
+  <button class="btn btn-sm btn-warning" type="button" id="removeValue-string-with-separator">removeValue('vue,svelte')</button>
+  <button class="btn btn-sm btn-warning" type="button" id="removeValue-array">removeValue(['solid', 'qwik'])</button>
+  <button class="btn btn-sm btn-info" type="button" id="getValue">getValue()</button>
+  <button class="btn btn-sm btn-info" type="button" id="getValues">getValues()</button>
+</div>
+
+<script>
+  const example = UseBootstrapTag(document.getElementById('example-methods'))
+
+  // @ts-ignore
+  document.getElementById('addValue-string').addEventListener('click', () => {
+    example.addValue('react')
+  })
+  // @ts-ignore
+  document.getElementById('addValue-string-with-separator').addEventListener('click', () => {
+    example.addValue('vue,svelte')
+  })
+  // @ts-ignore
+  document.getElementById('addValue-array').addEventListener('click', () => {
+    example.addValue(['solid', 'qwik'])
+  })
+  // @ts-ignore
+  document.getElementById('removeValue-string').addEventListener('click', () => {
+    example.removeValue('react')
+  })
+  // @ts-ignore
+  document.getElementById('removeValue-string-with-separator').addEventListener('click', () => {
+    example.removeValue('vue,svelte')
+  })
+  // @ts-ignore
+  document.getElementById('removeValue-array').addEventListener('click', () => {
+    example.removeValue(['solid', 'qwik'])
+  })
+  // @ts-ignore
+  document.getElementById('getValue').addEventListener('click', () => {
+    alert(example.getValue())
+  })
+  // @ts-ignore
+  document.getElementById('getValues').addEventListener('click', () => {
+    alert(JSON.stringify(example.getValues()))
+  })
+</script>

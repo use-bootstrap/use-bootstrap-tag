@@ -1,0 +1,113 @@
+---
+import '@fontsource/hind-siliguri/latin.css'
+import '@fontsource/inter-tight/latin.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import '../lib/use-bootstrap-tag.scss'
+import '../style.scss'
+import pkg from '../../package.json'
+import Pagination from './Pagination.astro'
+interface Props {
+  title?: string
+}
+const props = Astro.props
+const pathname = Astro.url.pathname
+
+const links = [
+  {
+    href: '/',
+    text: 'Home',
+  },
+  {
+    href: '/install.html',
+    text: 'Install',
+  },
+  {
+    href: '/demo.html',
+    text: 'Demo',
+  },
+  {
+    href: '/methods.html',
+    text: 'Methods',
+  },
+  {
+    href: '/customize.html',
+    text: 'Customize',
+  },
+]
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={pkg.description} />
+    <meta name="keywords" content={pkg.keywords.join(', ')} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{props.title ?? pkg.name} | {props.title ? pkg.name : pkg.description}</title>
+    <script is:inline>
+      const storedTheme = localStorage.getItem('theme') || 'light'
+      function setTheme(theme) {
+        document.documentElement.setAttribute('data-bs-theme', theme)
+        localStorage.setItem('theme', theme)
+      }
+      setTheme(storedTheme)
+    </script>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <div class="sticky-top">
+      <nav class="navbar navbar-expand bg-body-tertiary" data-bs-theme="dark">
+        <div class="container">
+          <a href="/" class="navbar-brand d-flex align-items-center gap-2">
+            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M3 2v4.586l7 7L14.586 9l-7-7H3zM2 2a1 1 0 0 1 1-1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 2 6.586V2z"></path><path d="M5.5 5a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm0 1a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM1 7.086a1 1 0 0 0 .293.707L8.75 15.25l-.043.043a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 0 7.586V3a1 1 0 0 1 1-1v5.086z"></path></svg>
+            <span>{pkg.name}</span>
+            <span class="badge text-bg-light">
+              v{pkg.version}
+            </span>
+          </a>
+          <div class="ms-auto navbar-nav align-items-center gap-3">
+            <div class="form-check form-switch navbar-text m-0">
+              <input class="form-check-input" type="checkbox" role="switch" id="switchTheme" />
+              <label class="form-check-label small" for="switchTheme">Dark Mode</label>
+              <script is:inline>
+                const switchTheme = document.getElementById('switchTheme')
+                switchTheme.checked = storedTheme === 'dark'
+                switchTheme.addEventListener('change', function () {
+                  setTheme(this.checked ? 'dark' : 'light')
+                })
+              </script>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <div class="bg-body-tertiary" style="border-bottom:var(--bs-border-width) solid var(--bs-border-color)">
+        <div class="container pt-2">
+          <nav class="overflow-x-auto" id="main-nav" style="margin-bottom:-1px">
+            <ul class="nav nav-underline flex-nowrap">
+              {
+                links.map((link) => (
+                  <li class="nav-item">
+                    <a class="nav-link link-body-emphasis" class:list={[{ active: pathname === link.href }]} href={link.href}>
+                      {link.text}
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main -->
+    <div class="container mt-4 mb-5">
+      <slot />
+    </div>
+
+    <!-- Footer -->
+    <div class="container">
+      <Pagination links={links} />
+    </div>
+  </body>
+</html>

@@ -1,0 +1,72 @@
+---
+interface Props {
+  links: {
+    href: string
+    text: string
+  }[]
+}
+const props = Astro.props
+const links = props.links
+const pathname = Astro.url.pathname
+
+let prevLink = null as null | { href: any; text: any }
+for (let i = 0; i < links.length; i++) {
+  if (links[i].href === pathname) {
+    if (i > 0) {
+      prevLink = links[i - 1]
+    }
+    break
+  }
+}
+
+let nextLink = null as null | { href: any; text: any }
+for (let i = 0; i < links.length; i++) {
+  if (links[i].href === pathname) {
+    if (i < links.length - 1) {
+      nextLink = links[i + 1]
+    }
+    break
+  }
+}
+---
+
+<nav aria-label="Page navigation">
+  <ul
+    class="pagination"
+    class:list={{
+      'justify-content-end': !prevLink,
+      'justify-content-between': prevLink,
+    }}
+  >
+    {
+      prevLink && (
+        <li class="page-item">
+          <a class="page-link link-body-emphasis rounded d-flex align-items-center gap-2" href={prevLink.href}>
+            <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <>
+                <path d="m12 19-7-7 7-7" />
+                <path d="M19 12H5" />
+              </>
+            </svg>
+            {prevLink.text}
+          </a>
+        </li>
+      )
+    }
+    {
+      nextLink && (
+        <li class="page-item">
+          <a class="page-link link-body-emphasis rounded d-flex align-items-center gap-2" href={nextLink.href}>
+            {nextLink.text}
+            <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <>
+                <path d="M5 12h14" />
+                <path d="m12 5 7 7-7 7" />
+              </>
+            </svg>
+          </a>
+        </li>
+      )
+    }
+  </ul>
+</nav>

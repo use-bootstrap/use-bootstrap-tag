@@ -1,0 +1,75 @@
+---
+import Layout from '../components/Layout.astro'
+import Code from '../components/Code.astro'
+import pkg from '../../package.json'
+
+const npmImport = `import '${pkg.name}/dist/${pkg.name}.css'
+import ${pkg.libName} from '${pkg.name}'`
+const cdnCss = `<link href="https://cdn.jsdelivr.net/npm/${pkg.name}@${pkg.version}/dist/${pkg.name}.min.css" rel="stylesheet">`
+const cdnJs = `<script src="https://cdn.jsdelivr.net/npm/${pkg.name}@${pkg.version}/dist/${pkg.name}.min.js"></script>`
+const cdnExample = `<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@${pkg.devDependencies.bootstrap}/dist/css/bootstrap.min.css" rel="stylesheet">
+    ${cdnCss}
+    <title>Example</title>
+  </head>
+  <body>
+    <div class="container pt-4">
+      <input type="text" class="form-control" value="html,css,js" id="example">
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@${pkg.devDependencies.bootstrap}/dist/js/bootstrap.bundle.min.js"></script>
+    ${cdnJs}
+    <script>
+      UseBootstrapTag(document.getElementById('example'))
+    </script>
+  </body>
+</html>`
+---
+
+<Layout title="Install">
+  <h1>Install</h1>
+  <p>To install this library, you can use npm for package management, the CDN for direct inclusion, or manually download it from the GitHub releases page.</p>
+  <ul class="nav nav-underline" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="npm-tab" data-bs-toggle="tab" data-bs-target="#npm-tab-pane" type="button" role="tab" aria-controls="npm-tab-pane" aria-selected="true">Install via NPM</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="cdn-tab" data-bs-toggle="tab" data-bs-target="#cdn-tab-pane" type="button" role="tab" aria-controls="cdn-tab-pane" aria-selected="false">Via CDN</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="download-tab" data-bs-toggle="tab" data-bs-target="#download-tab-pane" type="button" role="tab" aria-controls="download-tab-pane" aria-selected="false">Manual Download</button>
+    </li>
+  </ul>
+  <div class="tab-content pt-3" id="myTabContent">
+    <div class="tab-pane show active" id="npm-tab-pane" role="tabpanel" aria-labelledby="npm-tab" tabindex="0">
+      <ol>
+        <li>
+          <p>Install <code>{pkg.name}</code> in your Node.js powered apps with the npm package:</p>
+          <Code lang="bash" code={`npm install ${pkg.name}`} />
+        </li>
+        <li>
+          <p>After installation, you can import the library into your project as follows:</p>
+          <Code lang="typescript" code={npmImport} />
+        </li>
+      </ol>
+    </div>
+    <div class="tab-pane" id="cdn-tab-pane" role="tabpanel" aria-labelledby="cdn-tab" tabindex="0">
+      <p>You can use <code>{pkg.name}</code> directly via CDN:</p>
+      <Code lang="html" code={`${cdnCss}\n${cdnJs}`} />
+      <p>Example</p>
+      <Code lang="html" code={cdnExample} />
+    </div>
+    <div class="tab-pane" id="download-tab-pane" role="tabpanel" aria-labelledby="download-tab" tabindex="0">
+      <p>Visit the <a href={`${pkg.repository}/releases`} target="_blank">GitHub releases page</a> to download the latest version</p>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  import { Tab } from 'bootstrap-esm'
+  ;(window as any).bootstrap = {} as any
+  ;(window as any).bootstrap.Tab = Tab
+</script>

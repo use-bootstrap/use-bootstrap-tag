@@ -1,0 +1,12 @@
+<!-- Using data-ub-tag-x-position attribute: -->
+<div class="vstack gap-2">
+  <input type="text" class="form-control example-x-position" value="left" data-ub-tag-x-position="left" />
+  <input type="text" class="form-control example-x-position" value="right (default)" data-ub-tag-x-position="right" />
+</div>
+<!-- Available x-positions: left, right (default) -->
+
+<script>
+  document.querySelectorAll('.example-x-position').forEach((input) => {
+    UseBootstrapTag(input)
+  })
+</script>

@@ -1,7 +1,0 @@
-<!-- Using data-ub-tag-x-position attribute: -->
-<input type="text" class="form-control" value="html,css,js" data-ub-tag-x-position="left" id="example-x-position">
-<!-- Available x-positions: left, right (default) -->
-
-<script>
-  UseBootstrapTag(document.getElementById('example-x-position'))
-</script>

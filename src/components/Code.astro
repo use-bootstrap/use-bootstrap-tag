@@ -1,0 +1,32 @@
+---
+import { readFile } from 'node:fs/promises'
+import type { BuiltinLanguage, LanguageRegistration, SpecialLanguage } from 'shiki'
+
+interface Props {
+  code: any
+  /**
+   * The language of your code.
+   * Supports all languages listed here: https://shiki.style/languages
+   * Instructions for loading a custom language: https://shiki.style/guide/load-lang
+   *
+   * @default "html"
+   */
+  lang?: BuiltinLanguage | SpecialLanguage | LanguageRegistration
+}
+
+let { code, lang = 'html' } = Astro.props
+if (typeof code !== 'string') {
+  code = await readFile(code.moduleId, 'utf8')
+  code = (code as string).split('\n').filter(line => !line.includes('// @ts-ignore')).join('\n')
+}
+import { codeToHtml } from 'shiki'
+const value = await codeToHtml(code, {
+  lang: lang as any,
+  themes: {
+    light: 'one-light',
+    dark: 'one-dark-pro',
+  },
+})
+---
+
+<Fragment set:html={value} />

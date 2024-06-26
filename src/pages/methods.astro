@@ -1,0 +1,58 @@
+---
+import Layout from '../components/Layout.astro'
+import Code from '../components/Code.astro'
+---
+
+<Layout title="Methods">
+  <h1 class="mb-4">Methods</h1>
+  <div class="table-responsive">
+    <table class="table table-bordered" style="max-width: 600px">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Params</th>
+          <th>Returns</th>
+          <th>Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>addValue</code></td>
+          <td class="text-nowrap"><code>string | array</code></td>
+          <td><code>void</code></td>
+          <td>
+            <Code lang="javascript" code="example.addValue('react')" />
+            <Code lang="javascript" code="example.addValue('vue,svelte')" />
+            <Code lang="javascript" code="example.addValue(['solid', 'qwik'])" />
+          </td>
+        </tr>
+        <tr>
+          <td><code>removeValue</code></td>
+          <td><code>string | array</code></td>
+          <td><code>void</code></td>
+          <td>
+            <Code lang="javascript" code="example.removeValue('react')" />
+            <Code lang="javascript" code="example.removeValue('vue,svelte')" />
+            <Code lang="javascript" code="example.removeValue(['solid', 'qwik'])" />
+          </td>
+        </tr>
+        <tr>
+          <td><code>getValue</code></td>
+          <td><code>null</code></td>
+          <td><code>string</code></td>
+          <td>
+            <Code lang="javascript" code="example.getValue()" />
+          </td>
+        </tr>
+        <tr>
+          <td><code>getValues</code></td>
+          <td><code>null</code></td>
+          <td><code>array</code></td>
+          <td>
+            <Code lang="javascript" code="example.getValues()" />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</Layout>

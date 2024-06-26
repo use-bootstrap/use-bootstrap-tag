@@ -1,3 +1,7 @@
+v2.2.1
+  - Fixed types
+  - Update docs
+
 v2.2.0
   - Added no-input-onblur option.
 

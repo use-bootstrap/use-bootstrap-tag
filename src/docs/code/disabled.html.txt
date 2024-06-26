@@ -1,5 +1,0 @@
-<input type="text" class="form-control" value="html,css,js" id="example-disabled" disabled>
-
-<script>
-  UseBootstrapTag(document.getElementById('example-disabled'))
-</script>

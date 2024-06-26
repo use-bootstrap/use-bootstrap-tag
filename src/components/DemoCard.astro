@@ -1,0 +1,39 @@
+---
+import { titleCase } from 'scule'
+import Code from './Code.astro'
+
+const randomId = () => Math.random().toString(36).slice(2, 7)
+const id = randomId()
+const previewId = randomId()
+const codeId = randomId()
+interface Props {
+  title: string
+  code: any
+}
+const props = Astro.props
+---
+
+<div class="card h-100">
+  <div class="card-body">
+    <ul class="nav nav-underline" id={`tab-${id}`} role="tablist">
+      <li class="nav-item me-auto">
+        <a class="nav-link disabled text-body fs-5 fw-bold" aria-disabled="true">{titleCase(props.title)}</a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id={`tab-${previewId}`} data-bs-toggle="tab" data-bs-target={`#tab-${previewId}-pane`} type="button" role="tab" aria-controls={`tab-${previewId}-pane`} aria-selected="true">Preview</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id={`tab-${codeId}`} data-bs-toggle="tab" data-bs-target={`#tab-${codeId}-pane`} type="button" role="tab" aria-controls={`tab-${codeId}-pane`} aria-selected="false">Code</button>
+      </li>
+    </ul>
+    <div class="tab-content py-3" id={`tab-${id}-content`}>
+      <div class="tab-pane show active" id={`tab-${previewId}-pane`} role="tabpanel" aria-labelledby={`tab-${previewId}`} tabindex="-1">
+        <slot />
+      </div>
+      <div class="tab-pane" id={`tab-${codeId}-pane`} role="tabpanel" aria-labelledby={`tab-${codeId}`} tabindex="-1">
+        <Code code={props.code} />
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,6 +1,0 @@
-<!-- Using data-ub-tag-max attribute: -->
-<input type="text" class="form-control" placeholder="Enter tags (max 3)" data-ub-tag-max="3" id="example-max">
-
-<script>
-  UseBootstrapTag(document.getElementById('example-max'))
-</script>
