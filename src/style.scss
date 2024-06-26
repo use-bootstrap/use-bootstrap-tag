@@ -39,9 +39,6 @@ h6 {
 .shiki {
   padding: 1rem 1.25rem;
   border-radius: var(--bs-border-radius);
-  &:last-child {
-    margin-bottom: 0;
-  }
 
   [data-bs-theme="light"] & {
     background-color: #fafaf9 !important;

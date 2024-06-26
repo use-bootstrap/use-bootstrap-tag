@@ -3,6 +3,12 @@ import Layout from '../components/Layout.astro'
 import Code from '../components/Code.astro'
 ---
 
+<style lang="scss" is:global>
+  .shiki:last-child {
+    margin-bottom: 0;
+  }
+</style>
+
 <Layout title="Methods">
   <h1 class="mb-4">Methods</h1>
   <div class="table-responsive">
