@@ -5,7 +5,14 @@ import { arraysAreEqual, change, createElement, processData, pull } from './util
 const name = 'use-bootstrap-tag'
 const classTarget = `${name}-target`
 
-export default function UseBootstrapTag(element: Element | HTMLElement | null) {
+interface UseBootstrapTagReturnType {
+  getValue: () => string
+  getValues: () => string[]
+  addValue: (value: string | string[]) => void
+  removeValue: (value: string | string[]) => void
+}
+
+export default function UseBootstrapTag(element: Element | HTMLElement | null): UseBootstrapTagReturnType {
   const target = element as HTMLInputElement
 
   // If reinitialized

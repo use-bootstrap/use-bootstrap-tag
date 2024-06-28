@@ -1,8 +1,8 @@
-import { parse, resolve } from 'node:path'
-import { rename } from 'node:fs/promises'
+import { resolve } from 'node:path'
+import { readFile, writeFile } from 'node:fs/promises'
 import { defineConfig } from 'vite'
 import solid from 'vite-plugin-solid'
-import dts from 'vite-plugin-dts'
+import oxc from 'oxc-transform'
 import pkg from './package.json'
 
 // https://vitejs.dev/config/
@@ -20,15 +20,14 @@ export default defineConfig({
   },
   plugins: [
     solid(),
-    dts({
-      // library source only.
-      include: pkg.source,
-
-      // fix the generated declaration files following the source structure.
-      entryRoot: parse(pkg.source).dir,
-
-      // follow package.json "types" property.
-      afterBuild: () => rename(`dist/${parse(pkg.source).name}.d.ts`, pkg.types),
-    }),
+    {
+      name: 'dts',
+      async closeBundle() {
+        const file = pkg.source
+        const text = await readFile(file, 'utf8')
+        const code = oxc.isolatedDeclaration(file, text)
+        await writeFile(pkg.types, code.sourceText)
+      },
+    },
   ],
 })
