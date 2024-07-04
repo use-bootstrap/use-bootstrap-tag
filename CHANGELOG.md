@@ -1,3 +1,6 @@
+v2.2.2
+  - Fixed placeholder color
+
 v2.2.1
   - Fixed types
   - Update docs

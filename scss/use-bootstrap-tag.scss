@@ -30,6 +30,12 @@ $duplicate-transform: 'scale(1.1)';
     border: 0;
     width: 100%;
     background-color: transparent;
+
+    // Source: bootstrap/scss/forms/_form-control.scss:75
+    &::placeholder {
+      color: $input-placeholder-color;
+      opacity: 1;
+    }
   }
 
   .#{$target}:not(:disabled)+& {
