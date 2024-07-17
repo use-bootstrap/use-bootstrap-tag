@@ -25,7 +25,7 @@ const badges = [
   <h1>{pkg.name}</h1>
   <p>{pkg.description}.</p>
   <div class="d-flex flex-wrap gap-2">
-    {badges.map((badge) => <img src={badge.src} alt={badge.alt} />)}
+    {badges.map((badge) => <img src={badge.src} alt={badge.alt} loading="lazy" height="20" />)}
   </div>
   <hr />
   <h5>Features</h5>
