@@ -25,3 +25,4 @@ pnpm-debug.log*
 
 # locks
 pnpm-lock.yaml
+bun.lockb
