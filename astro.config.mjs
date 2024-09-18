@@ -1,5 +1,6 @@
-import { defineConfig } from 'astro/config'
 import solidJs from '@astrojs/solid-js'
+import { defineConfig } from 'astro/config'
+import FullReload from 'vite-plugin-full-reload'
 
 // https://astro.build/config
 export default defineConfig({
@@ -18,5 +19,10 @@ export default defineConfig({
   prefetch: {
     prefetchAll: true,
     defaultStrategy: 'viewport',
+  },
+  vite: {
+    plugins: [
+      FullReload('src/lib/**/*'),
+    ],
   },
 })

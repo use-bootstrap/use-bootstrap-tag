@@ -1,5 +1,5 @@
 /* eslint-disable no-new-func */
-import { effect, state } from './reactive'
+import { effect, state } from 'stef'
 import { arraysAreEqual, change, createElement, processData, pull } from './util'
 
 const name = 'use-bootstrap-tag'
@@ -109,7 +109,7 @@ export default function UseBootstrapTag(element: Element | HTMLElement | null): 
   const [focus, setFocus] = state(false)
   const [text, setText] = state('')
   const values = () => value().split(config.separator).filter(i => i.trim() !== '')
-  const texts = () => Function(`return ${config.transform}`)()(text().trim()) as string
+  const texts = () => new Function(`return ${config.transform}`)()(text().trim()) as string
   const placeholder = () => values().length ? '' : target.placeholder
 
   // Styling

@@ -1,6 +1,6 @@
 import { resolve } from 'node:path'
-import { defineConfig } from 'vite'
 import { generate } from 'fast-dts'
+import { defineConfig } from 'vite'
 import solid from 'vite-plugin-solid'
 import pkg from './package.json'
 
