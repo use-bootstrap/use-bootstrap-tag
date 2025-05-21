@@ -9,6 +9,7 @@ interface UseBootstrapTagReturnType {
   getValue: () => string
   getValues: () => string[]
   addValue: (value: string | string[]) => void
+  addReadonlyValue: (value: string | string[]) => void
   removeValue: (value: string | string[]) => void
 }
 
@@ -27,15 +28,20 @@ export default function UseBootstrapTag(element: Element | HTMLElement | null): 
 
   // Config
   const dataset = target.dataset
+  const readonlySet = new Set<string>()
   const config = {
     separator: dataset.ubTagSeparator || ',',
     variant: dataset.ubTagVariant || 'secondary',
     xPosition: dataset.ubTagXPosition as 'left' | 'right' || 'right',
     transform: dataset.ubTagTransform || 'input => input',
+    validate: dataset.ubTagValidate || '',
+    validateModifiers: dataset.ubTagValidateModifiers || 'i',
     isDuplicate: dataset.ubTagDuplicate !== undefined,
+    rainbow: dataset.ubTagRainbow !== undefined,
     max: +dataset.ubTagMax! > 0 ? +dataset.ubTagMax! : undefined,
     noInputOnblur: dataset.ubTagNoInputOnblur !== undefined,
   }
+  const colorMap = new Map<string, string>()
 
   const tags = () => root.querySelectorAll('button')
   const animateTag = (tag: HTMLButtonElement) => {
@@ -46,6 +52,56 @@ export default function UseBootstrapTag(element: Element | HTMLElement | null): 
   }
 
   // Returned methods
+  const predefinedColors = [
+    '#f44336', // red
+    '#e91e63', // pink
+    '#9c27b0', // purple
+    '#673ab7', // deep purple
+    '#3f51b5', // indigo
+    '#2196f3', // blue
+    '#03a9f4', // light blue
+    '#00bcd4', // cyan
+    '#009688', // teal
+    '#4caf50', // green
+    '#8bc34a', // light green
+    '#cddc39', // lime
+    '#ffeb3b', // yellow
+    '#ffc107', // amber
+    '#ff9800', // orange
+    '#ff5722', // deep orange
+    '#795548', // brown
+    '#9e9e9e', // gray
+    '#607d8b', // blue gray
+    '#8e24aa', // strong purple
+    '#d81b60', // strong pink
+    '#43a047', // dark green
+    '#1e88e5', // vivid blue
+    '#f4511e', // strong orange
+    '#6d4c41', // dark brown
+    '#3949ab', // bold indigo
+    '#00897b', // deep teal
+    '#fbc02d', // bold yellow
+    '#5e35b1', // dark purple
+    '#00acc1', // medium cyan
+  ]
+  const getRandomColor = () => predefinedColors[Math.floor(Math.random() * predefinedColors.length)]
+  const getContrastingTextColor = (bgColor: string): string => {
+    // Remove '#' and convert to RGB
+    const hex = bgColor.replace('#', '')
+    const r = Number.parseInt(hex.substring(0, 2), 16)
+    const g = Number.parseInt(hex.substring(2, 4), 16)
+    const b = Number.parseInt(hex.substring(4, 6), 16)
+
+    // Calculate luminance
+    const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255
+
+    // Return black for light backgrounds, white for dark backgrounds
+    return luminance > 0.5 ? '#000' : '#fff'
+  }
+  const isValid = (value: string): boolean => {
+    const re = new RegExp(config.validate, config.validateModifiers)
+    return !config.validate || re.test(value)
+  }
   const getValue = (): string => target.value
   const getValues = (): string[] => getValue().split(config.separator).filter(i => i !== '')
   const addValue = (value: string | string[]): void => {
@@ -55,10 +111,12 @@ export default function UseBootstrapTag(element: Element | HTMLElement | null): 
       // Get duplicates
       const duplicates = [] as number[]
       !config.isDuplicate && values.forEach((value, index) => insert.includes(value) && duplicates.push(index))
-
       // Get inserted
       const inserted = [] as string[]
       insert.forEach((i) => {
+        if (!isValid(i)) {
+          return false
+        }
         if (values.includes(i)) {
           config.isDuplicate && inserted.push(i)
         }
@@ -88,10 +146,21 @@ export default function UseBootstrapTag(element: Element | HTMLElement | null): 
       insert.length > 0 && tags().forEach(animateTag)
     }
   }
+  const addReadonlyValue = (value: string | string[]): void => {
+    const insert = processData(value, config.separator)
+    readonlySet.clear() // Optional: depends if you want to reset previous readonly tags
+    insert.forEach(v => readonlySet.add(v))
+    addValue(insert)
+  }
   const removeValue = (value: string | string[]): void => {
     const values = getValues()
     const remove = processData(value, config.separator)
-    remove.forEach(i => pull(values, i))
+    remove.forEach((i) => {
+      if (!readonlySet.has(i)) {
+        pull(values, i)
+        colorMap.delete(i)
+      }
+    })
     if (!arraysAreEqual(getValues(), values)) {
       change(target, values.join(config.separator))
     }
@@ -155,6 +224,14 @@ export default function UseBootstrapTag(element: Element | HTMLElement | null): 
       const index = items.length - 1 - i
       const tag = tagElement.cloneNode() as typeof tagElement
       tag.innerHTML = value
+      if (config.rainbow) {
+        if (!colorMap.has(value)) {
+          colorMap.set(value, getRandomColor())
+        }
+        const color = colorMap.get(value)!
+        tag.style.backgroundColor = color
+        tag.style.color = getContrastingTextColor(color)
+      }
       tag.onfocus = () => {
         tag.classList.add('active')
         setFocus(true)
@@ -164,7 +241,7 @@ export default function UseBootstrapTag(element: Element | HTMLElement | null): 
         setFocus(false)
       }
       tag.onkeydown = ({ key }) => {
-        if (key === 'Backspace' || key === 'Delete') {
+        if ((key === 'Backspace' || key === 'Delete') && !readonlySet.has(value)) {
           removeByIndex(index)
           const nextFocus = key === 'Backspace' ? index - 1 : values().length === index ? -1 : index
           if (nextFocus === -1) {
@@ -175,7 +252,7 @@ export default function UseBootstrapTag(element: Element | HTMLElement | null): 
           }
         }
       }
-      if (!disabled) {
+      if (!disabled && !readonlySet.has(value)) {
         const span = closeTagElement.cloneNode(true) as typeof closeTagElement
         span.onclick = () => {
           removeByIndex(index)
@@ -239,5 +316,5 @@ export default function UseBootstrapTag(element: Element | HTMLElement | null): 
   })
   target.addEventListener('focus', textFocus)
 
-  return { getValue, getValues, addValue, removeValue }
+  return { getValue, getValues, addValue, removeValue, addReadonlyValue }
 }

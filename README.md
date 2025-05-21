@@ -12,6 +12,9 @@ Demo and documentation: [https://use-bootstrap-tag.js.org](https://use-bootstrap
 - **Max limit**: Set a maximum limit of tags that can be added.
 - **Sizing**: Adjustable sizing to match user preferences or layouts.
 - **Validation**: Reflects validation states visually to align with Bootstrap's form validation feedback.
+- **Value Validation**: Validate tag value with custom RegExp before adding to the list.
+- **Rainbow**: Add rainbow random colors to your tags
+
 ## Installation
 
 Install use-bootstrap-tag from npm:
@@ -67,6 +70,9 @@ data-ub-tag-variant
 data-ub-tag-x-position
 data-ub-tag-max
 data-ub-tag-no-input-onblur
+data-ub-tag-validate
+data-ub-tag-validate-modifiers
+data-ub-tag-rainbow
 ```
 
 ```html
@@ -80,6 +86,9 @@ data-ub-tag-no-input-onblur
   data-ub-tag-x-position="left"
   data-ub-tag-max="5"
   data-ub-tag-no-input-onblur
+  data-ub-tag-validate="/[a-zA-Z]/"
+  data-ub-tag-validate-modifiers="i"
+  data-ub-tag-rainbow
 >
 ```
 ## Methods
@@ -90,6 +99,7 @@ data-ub-tag-no-input-onblur
 | removeValue  | string \| array | void    | `example.removeValue('react')`<br/>`example.removeValue('vue,svelte')`<br/>`example.removeValue(['solid', 'qwik'])`    |
 | getValue  | null            | string  | `example.getValue()`  |
 | getValues | null            | array   | `example.getValues()` |
+| addReadonlyValue | string \| array | void    | `example.addReadonlyValue('react')`<br/>`example.addReadonlyValue('vue,svelte')`<br/>`example.addReadonlyValue(['solid', 'qwik'])`    |
 
 ## License
 
